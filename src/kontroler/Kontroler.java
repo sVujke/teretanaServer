@@ -5,10 +5,28 @@
  */
 package kontroler;
 
+import domen.AbstractObjekat;
+import java.util.List;
+
 /**
  *
  * @author vujke
  */
 public class Kontroler {
     
+    private static Kontroler instance;
+    
+    public static Kontroler vratiKontrolera(){
+        if(instance == null){
+            instance = new Kontroler();
+        }
+        return instance;
+    }
+    //public static List<AbstractObjekat> vratiListuMesta() throws Exception {
+        //SOVratiSvaMesta som = new SOVratiSvaMesta();
+
+        //som.izvrsiOperaciju();
+        //return som.vratiListuMesta();
+     //   return 
+    //}
 }
