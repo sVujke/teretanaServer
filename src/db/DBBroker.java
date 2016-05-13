@@ -6,7 +6,10 @@
 package db;
 
 import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -28,11 +31,31 @@ public class DBBroker {
     }
     
     public void konektujSe(){
-    
+        try { 
+            Class.forName("com.mysql.jdbc.Driver");
+            
+            String url = util.Konstante.url;
+            String user = util.Konstante.user;
+            String password = util.Konstante.pass;
+            
+            konekcija = DriverManager.getConnection(url, user, password);
+            konekcija.setAutoCommit(false);
+            System.out.println("Konekcija uspesna");
+     
+        } catch (ClassNotFoundException ex) {
+            
+            Logger.getLogger(DBBroker.class.getName()).log(Level.SEVERE, null, ex);
+        } catch(SQLException ex){
+            System.out.println("Nije uspostavljena konekcija");
+        }
     }
     
     public void diskonektujSe(){
-    
+        try {
+            konekcija.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(DBBroker.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
     public void potvrdiTransakciju() {
