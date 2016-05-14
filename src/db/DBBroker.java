@@ -5,9 +5,12 @@
  */
 package db;
 
+import domen.AbstractObjekat;
+import domen.Mesto;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -72,5 +75,9 @@ public class DBBroker {
         } catch (SQLException ex) {
             System.out.println("Neuspesan rollback.");
         }
+    }
+
+    public List<AbstractObjekat> vratiSveObjekte(Mesto mesto) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

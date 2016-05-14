@@ -27,15 +27,15 @@ public class AbstractSO {
         db.diskonektujSe();
     }
 
-    private void izvrsiKonkretnuOperaciju() {
+    protected void izvrsiKonkretnuOperaciju() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    private void izvrsiValidaciju() {
+    protected void izvrsiValidaciju() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    private void proveriPreduslove() {
+    protected void proveriPreduslove() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
