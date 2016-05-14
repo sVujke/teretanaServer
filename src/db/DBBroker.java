@@ -9,7 +9,10 @@ import domen.AbstractObjekat;
 import domen.Mesto;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -25,13 +28,7 @@ public class DBBroker {
     public DBBroker() {
     }
     
-    public static DBBroker vratiInstancu(){
-        if(instance==null){
-            instance = new DBBroker();
-        }
-        
-        return instance;
-    }
+    
     
     public void konektujSe(){
         try { 
@@ -77,7 +74,31 @@ public class DBBroker {
         }
     }
 
-    public List<AbstractObjekat> vratiSveObjekte(Mesto mesto) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public List<AbstractObjekat> vratiSveObjekte(AbstractObjekat o) {
+        
+        List<AbstractObjekat> listaObjekata = new ArrayList<>();
+        
+        try {
+            
+            
+            String upit = "SELECT * FROM"+ o.vratiImeTabele();
+            
+            Statement s = konekcija.createStatement();
+            ResultSet rs = s.executeQuery(upit);
+            
+            listaObjekata = o.izRsUTabelu(rs);
+            s.close();
+            System.out.println("Uspesan SELECT");
+            
+          
+            //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        } catch (SQLException ex) {
+            System.out.println("greska kod SELECT");
+            Logger.getLogger(DBBroker.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return listaObjekata;
     }
+    
+    
 }
