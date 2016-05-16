@@ -5,8 +5,17 @@
  */
 package thread;
 
+import domen.AbstractObjekat;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.net.Socket;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import konstante.Konstante;
+import transfer.KlijentTransfer;
+import transfer.ServerTransfer;
 
 /**
  *
@@ -24,7 +33,39 @@ public class KlijentThread extends Thread {
 
     @Override
     public void run() {
-        super.run(); //To change body of generated methods, choose Tools | Templates.
+        ObjectInputStream in = null;
+        try {
+            //hvatanje objekta    
+            in = new ObjectInputStream(s.getInputStream());
+            ObjectOutputStream out = new ObjectOutputStream(s.getOutputStream());
+            // ovde treba da radim obradu zahtev sa servera :)
+            while(true){
+            KlijentTransfer kt = (KlijentTransfer) in.readObject();
+            int operacija = kt.getOperacija();
+            
+            switch(operacija){
+                case Konstante.VRATI_LISTU_MESTA: 
+                    ServerTransfer st = new ServerTransfer();
+            
+                    try {
+                        List<AbstractObjekat> mesta = kontroler.Kontroler.vratiListuMesta();
+                        st.setUspesnostOperacije(1);
+                        st.setPodaci(mesta);
+                    } catch (Exception ex) {
+                        st.setUspesnostOperacije(-1);
+                        st.setException(ex);
+                        Logger.getLogger(KlijentThread.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    
+                    out.writeObject(st);
+            }
+            }
+            //super.run(); //To change body of generated methods, choose Tools | Templates.
+        } catch (IOException ex) {
+            Logger.getLogger(KlijentThread.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(KlijentThread.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
     
