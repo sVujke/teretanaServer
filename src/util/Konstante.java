@@ -12,7 +12,7 @@ package util;
 public class Konstante {
     
     // db connection url 
-    public static final String url = "jdbc:mysql://localhost:3306/IME_BAZE";
+    public static final String url = "jdbc:mysql://localhost:3306/teretana_db";
     public static final String user = "root";
     public static final String pass = "";
 }
