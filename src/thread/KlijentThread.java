@@ -10,6 +10,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
+import java.net.SocketException;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -60,12 +61,16 @@ public class KlijentThread extends Thread {
                     out.writeObject(st);
             }
             }
-            //super.run(); //To change body of generated methods, choose Tools | Templates.
+         
+        //super.run(); //To change body of generated methods, choose Tools | Templates.
+        } catch (SocketException sex){    
+            System.out.println("Jedan klijent manje");
         } catch (IOException ex) {
             Logger.getLogger(KlijentThread.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(KlijentThread.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        } 
+           
     }
     
     

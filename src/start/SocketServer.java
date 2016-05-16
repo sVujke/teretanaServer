@@ -39,7 +39,9 @@ public class SocketServer extends Thread {
     public void run() {
         while (true){
             try {
+                System.out.println("kamon");
                 Socket s = ss.accept();
+                System.out.println("prihvacen");
                 
                 KlijentThread k = new KlijentThread(s, klijenti);
                 
