@@ -7,6 +7,7 @@ package kontroler;
 
 import domen.AbstractObjekat;
 import java.util.List;
+import so.SOVratiSvaMesta;
 
 /**
  *
@@ -22,11 +23,12 @@ public class Kontroler {
         }
         return instance;
     }
-    //public static List<AbstractObjekat> vratiListuMesta() throws Exception {
-        //SOVratiSvaMesta som = new SOVratiSvaMesta();
+    
+    public static List<AbstractObjekat> vratiListuMesta() throws Exception {
+        SOVratiSvaMesta som = new SOVratiSvaMesta();
 
-        //som.izvrsiOperaciju();
-        //return som.vratiListuMesta();
+        som.izvrsiOperaciju();
+        return som.vratiListuMesta();
      //   return 
-    //}
+    }
 }
