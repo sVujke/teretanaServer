@@ -7,6 +7,7 @@ package kontroler;
 
 import domen.AbstractObjekat;
 import java.util.List;
+import so.SOVratiListuKorisnika;
 import so.SOVratiListuMesta;
 
 /**
@@ -30,5 +31,12 @@ public class Kontroler {
         som.izvrsiOperaciju();
         return som.getListaMesta();
      //   return 
+    }
+    
+    public static List<AbstractObjekat> vratiListuKorisnika(){
+        SOVratiListuKorisnika som = new SOVratiListuKorisnika();
+        
+        som.izvrsiOperaciju();
+        return som.getListaKorisnika();
     }
 }

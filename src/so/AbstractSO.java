@@ -11,7 +11,7 @@ import db.DBBroker;
  *
  * @author vujke
  */
-public class AbstractSO {
+public abstract class AbstractSO {
     protected DBBroker db;
 
     public AbstractSO() {
@@ -27,17 +27,11 @@ public class AbstractSO {
         db.diskonektujSe();
     }
 
-    protected void izvrsiKonkretnuOperaciju() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+    protected abstract void izvrsiKonkretnuOperaciju();
 
-    protected void izvrsiValidaciju() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+    protected abstract void izvrsiValidaciju();
 
-    protected void proveriPreduslove() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+    protected abstract void proveriPreduslove();
     
 
     

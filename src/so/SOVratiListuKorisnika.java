@@ -6,25 +6,21 @@
 package so;
 
 import domen.AbstractObjekat;
-import domen.Mesto;
+import domen.Korisnik;
 import java.util.List;
 
 /**
  *
  * @author vujke
  */
-public class SOVratiListuMesta extends AbstractSO {
+public class SOVratiListuKorisnika extends AbstractSO {
     
-    private List<AbstractObjekat> listaMesta;
+    private List<AbstractObjekat> listaKorisnika;
 
     @Override
     protected void izvrsiKonkretnuOperaciju() {
-        listaMesta = db.vratiSveObjekte(new Mesto());
-        //super.izvrsiKonkretnuOperaciju(); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    public List<AbstractObjekat> getListaMesta() {
-        return listaMesta;
+        listaKorisnika = db.vratiSveObjekte(new Korisnik());
+                
     }
 
     @Override
@@ -36,6 +32,9 @@ public class SOVratiListuMesta extends AbstractSO {
     protected void proveriPreduslove() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
+
+    public List<AbstractObjekat> getListaKorisnika() {
+        return listaKorisnika;
+    }
     
 }

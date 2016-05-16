@@ -81,7 +81,7 @@ public class DBBroker {
         try {
             
             
-            String upit = "SELECT * FROM"+ o.vratiImeTabele();
+            String upit = "SELECT * FROM "+ o.vratiImeTabele();
             
             Statement s = konekcija.createStatement();
             ResultSet rs = s.executeQuery(upit);
