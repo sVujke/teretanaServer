@@ -6,7 +6,9 @@
 package kontroler;
 
 import domen.AbstractObjekat;
+import domen.Korisnik;
 import java.util.List;
+import so.SOPrijaviKorisnika;
 import so.SOVratiListuKorisnika;
 import so.SOVratiListuMesta;
 
@@ -39,4 +41,12 @@ public class Kontroler {
         som.izvrsiOperaciju();
         return som.getListaKorisnika();
     }
+    
+    public static AbstractObjekat prijaviKorisnika(Korisnik k) throws Exception{
+        SOPrijaviKorisnika som = new SOPrijaviKorisnika((AbstractObjekat) k);
+        
+        som.izvrsiOperaciju();
+        System.out.println("izvrsena operacija");
+        return som.getKorisnik();
+    } 
 }

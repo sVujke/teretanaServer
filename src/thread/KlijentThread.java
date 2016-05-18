@@ -6,6 +6,7 @@
 package thread;
 
 import domen.AbstractObjekat;
+import domen.Korisnik;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
@@ -44,8 +45,8 @@ public class KlijentThread extends Thread {
             KlijentTransfer kt = (KlijentTransfer) in.readObject();
             int operacija = kt.getOperacija();
             
-            switch(operacija){
-                case Konstante.VRATI_LISTU_MESTA: 
+            
+                if(operacija == Konstante.VRATI_LISTU_MESTA){  
                     ServerTransfer st = new ServerTransfer();
             
                     try {
@@ -59,8 +60,30 @@ public class KlijentThread extends Thread {
                     }
                     
                     out.writeObject(st);
+                }
+                
+                if(operacija == Konstante.PRIJAVI_KORISNIKA){
+                    ServerTransfer st = new ServerTransfer();
+                    
+                    try{
+                        Korisnik korisnik = (Korisnik) kt.getParametar();
+                        //ServerTransfer st = new ServerTransfer();
+                    
+                        Korisnik kor = (Korisnik) kontroler.Kontroler.prijaviKorisnika(korisnik);
+                        st.setUspesnostOperacije(1);
+                        st.setPodaci(kor);
+                    } catch (Exception ex){
+                        st.setUspesnostOperacije(-1);
+                        st.setException(ex);
+                        Logger.getLogger(KlijentThread.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    
+                    
+                    //AbstractObjekat korisnik = 
+                    //AbstractObjekat korisnik = kontroler.Kontroler.prijaviKorisnika(korisnik);
+                }
             }
-            }
+            
          
         //super.run(); //To change body of generated methods, choose Tools | Templates.
         } catch (SocketException sex){    
@@ -71,7 +94,7 @@ public class KlijentThread extends Thread {
             Logger.getLogger(KlijentThread.class.getName()).log(Level.SEVERE, null, ex);
         } 
            
+    
+    
     }
-    
-    
 }
