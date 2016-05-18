@@ -78,7 +78,7 @@ public class KlijentThread extends Thread {
                         Logger.getLogger(KlijentThread.class.getName()).log(Level.SEVERE, null, ex);
                     }
                     
-                    
+                    out.writeObject(st);
                     //AbstractObjekat korisnik = 
                     //AbstractObjekat korisnik = kontroler.Kontroler.prijaviKorisnika(korisnik);
                 }
