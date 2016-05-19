@@ -100,5 +100,49 @@ public class DBBroker {
         return listaObjekata;
     }
     
+    public AbstractObjekat sacuvajObjekat(AbstractObjekat o) throws SQLException{
+        String upit = "";
+        
+        upit = "INSERT INTO "+ o.vratiImeTabele() + " VALUES ("+
+                o.vratiParametre() + ")";
+        Statement s = konekcija.createStatement();
+        s.executeUpdate(upit);
+        s.close();
+        return o;
+    }
     
+    public AbstractObjekat vratiObjekatPoKljucu(AbstractObjekat o, int id) throws SQLException{
+        String upit = "";
+        
+        if(o.vratiPK() != null){
+            upit = "SELECT * FROM " + o.vratiImeTabele() + " WHERE " + o.vratiPK() + "=" + id;
+        } else {
+            upit = "SELECT * FROM " + o.vratiImeTabele() + o.vratiSlozeniPK();
+        }
+        
+        Statement s = konekcija.createStatement();
+        ResultSet rs = s.executeQuery(upit);
+        List<AbstractObjekat> lista = new ArrayList<>();
+        lista = o.izRsUTabelu(rs);
+        s.close();
+        return lista.get(0);
+    }
+    
+    public AbstractObjekat obrisiObjekat(AbstractObjekat o) throws SQLException{
+    
+    String upit = "";
+    
+    if(o.vratiPK() != null){
+        upit = "DELETE FROM "+o.vratiImeTabele()+" WHERE "+o.vratiPK()+
+                "="+ o.vratiVrednostiPK();
+    }else {
+        upit = "DELETE FROM "+o.vratiImeTabele()+ o.vratiSlozeniPK();
+    }
+        Statement s = konekcija.createStatement();
+        System.out.println("4. UPIT: "+upit+"#");
+        s.executeUpdate(upit);
+        potvrdiTransakciju();
+        s.close();
+        return o;
+    }
 }
