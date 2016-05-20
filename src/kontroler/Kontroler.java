@@ -11,6 +11,7 @@ import java.util.List;
 import so.SOPrijaviKorisnika;
 import so.SOVratiListuKorisnika;
 import so.SOVratiListuMesta;
+import so.SOZapamtiClana;
 
 /**
  *
@@ -49,4 +50,12 @@ public class Kontroler {
         System.out.println("izvrsena operacija");
         return som.getKorisnik();
     } 
+    
+    public static AbstractObjekat zapamtiClana(AbstractObjekat clan) throws Exception {
+        SOZapamtiClana som = new SOZapamtiClana(clan);
+        
+        som.izvrsiOperaciju();
+        System.out.println("izvrsena operacija");
+        return som.getClan();
+    }
 }
