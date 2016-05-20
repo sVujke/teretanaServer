@@ -145,4 +145,36 @@ public class DBBroker {
         s.close();
         return o;
     }
+    
+    public AbstractObjekat sacuvajIliAzurirajObjekat(AbstractObjekat o) throws SQLException {
+        List<AbstractObjekat> lista = vratiSveObjekte(o);
+
+        String upit = "";
+        if (!lista.contains(o)) {
+            upit = "INSERT INTO " + o.vratiImeTabele() + " VALUES (" + o.vratiParametre() + ")";
+            System.out.println("1.UPIT: "+upit);
+        } else {
+            if (o.getStatus() == -1) {
+                upit = "DELETE FROM " + o.vratiImeTabele() + o.vratiSlozeniPK();
+                System.out.println("UPIT: " + upit);
+
+            } else {
+                if (o.vratiPK() != null) {
+
+                    upit = "UPDATE " + o.vratiImeTabele() + " SET " + o.vratiUpdateUpit() + " WHERE " + o.vratiPK() + "=" + o.vratiVrednostiPK();
+                    System.out.println("2.UPIT: "+upit);
+                } else {
+
+                    upit = "UPDATE " + o.vratiImeTabele() + " SET " + o.vratiUpdateUpit() + o.vratiSlozeniPK();
+                    System.out.println("3.UPIT: "+upit);
+                }
+            }
+
+        }
+
+        Statement s = (Statement) konekcija.createStatement();
+        int i = s.executeUpdate(upit);
+        s.close();
+        return o;
+    }
 }
