@@ -16,7 +16,7 @@ import java.util.logging.Logger;
  */
 public class SOZapamtiClana extends AbstractSO {
     
-    AbstractObjekat clan;
+    private AbstractObjekat clan;
 
     public SOZapamtiClana(AbstractObjekat clan) {
         this.clan = clan;
@@ -29,7 +29,7 @@ public class SOZapamtiClana extends AbstractSO {
         } catch (SQLException ex) {
             Logger.getLogger(SOZapamtiClana.class.getName()).log(Level.SEVERE, null, ex);
         }
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
@@ -41,5 +41,13 @@ public class SOZapamtiClana extends AbstractSO {
     protected void proveriPreduslove() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+    public AbstractObjekat getClan() {
+        return clan;
+    }
+
+    
+
+    
     
 }
