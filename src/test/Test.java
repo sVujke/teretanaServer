@@ -29,8 +29,18 @@ public class Test {
        clan = Kontroler.vratiKontrolera().zapamtiClana(clan);
         System.out.println(clan);
         */
+       /*
        AbstractObjekat clan = new Clan("2", "Perah", "Peric", "p@p.rs", "adresa", "0644282784", new Mesto(null, null, "1"));
        clan = Kontroler.vratiKontrolera().obrisiClana(clan);
        System.out.println(clan);
+       */
+       AbstractObjekat clan = new Clan("", "Pera", "Peric", "p@p.rs", "adresa", "0644282784", new Mesto(null, null, "1"));
+       
+       List<AbstractObjekat> clanovi = Kontroler.vratiKontrolera().pretraziClanove(clan);
+        for (AbstractObjekat abstractObjekat : clanovi) {
+                System.out.println(abstractObjekat);
+        }
+       
+       
     }
 }

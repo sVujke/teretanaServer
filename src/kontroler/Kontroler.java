@@ -9,6 +9,7 @@ import domen.AbstractObjekat;
 import domen.Korisnik;
 import java.util.List;
 import so.SOObrisiClana;
+import so.SOPretraziClanove;
 import so.SOPrijaviKorisnika;
 import so.SOVratiListuKorisnika;
 import so.SOVratiListuMesta;
@@ -66,5 +67,13 @@ public class Kontroler {
         som.izvrsiOperaciju();
         System.out.println("izvrsena operacija");
         return som.getClan();
+    }
+    
+    public static  List<AbstractObjekat> pretraziClanove(AbstractObjekat clan){
+        SOPretraziClanove som = new SOPretraziClanove(clan);
+        
+        som.izvrsiOperaciju();
+        System.out.println("izvrsena operacija");
+        return som.getClanovi();
     }
 }
