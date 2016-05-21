@@ -16,6 +16,7 @@ import so.SOVratiListuMesta;
 import so.SOVratiListuPaketa;
 import so.SOZapamtiClana;
 import so.SOZapamtiDolazak;
+import so.SOZapamtiPaket;
 
 /**
  *
@@ -93,6 +94,14 @@ public class Kontroler {
         som.izvrsiOperaciju();
         System.out.println("izvrsena operacija");
         return som.getPaketi();
+    }
+    
+    public static AbstractObjekat zapamtiPaket(AbstractObjekat paket){
+        SOZapamtiPaket som = new SOZapamtiPaket(paket);
+        
+        som.izvrsiOperaciju();
+        System.out.println("izvrsena operacija");
+        return som.getPaket();
     }
     
     
