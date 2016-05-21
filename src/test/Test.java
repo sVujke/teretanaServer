@@ -24,8 +24,13 @@ public class Test {
         for (AbstractObjekat ao : korisnici) {
             System.out.println(ao.vratiParametre());
         } */
-       AbstractObjekat clan = new Clan("2", "Perah", "Peric", "p@p.rs", "adresa", "0644282784", new Mesto(null, null, "1"));
+      
+       /*AbstractObjekat clan = new Clan("2", "Perah", "Peric", "p@p.rs", "adresa", "0644282784", new Mesto(null, null, "1"));
        clan = Kontroler.vratiKontrolera().zapamtiClana(clan);
         System.out.println(clan);
+        */
+       AbstractObjekat clan = new Clan("2", "Perah", "Peric", "p@p.rs", "adresa", "0644282784", new Mesto(null, null, "1"));
+       clan = Kontroler.vratiKontrolera().obrisiClana(clan);
+       System.out.println(clan);
     }
 }

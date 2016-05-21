@@ -128,7 +128,7 @@ public class DBBroker {
         return lista.get(0);
     }
     
-    public AbstractObjekat obrisiObjekat(AbstractObjekat o) throws SQLException{
+    public AbstractObjekat obrisiObjekat(AbstractObjekat o) throws SQLException, SQLException, SQLException{
     
     String upit = "";
     
@@ -177,4 +177,6 @@ public class DBBroker {
         s.close();
         return o;
     }
+    
+   
 }
