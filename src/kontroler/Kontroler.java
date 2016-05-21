@@ -14,6 +14,7 @@ import so.SOPrijaviKorisnika;
 import so.SOVratiListuKorisnika;
 import so.SOVratiListuMesta;
 import so.SOZapamtiClana;
+import so.SOZapamtiDolazak;
 
 /**
  *
@@ -76,4 +77,14 @@ public class Kontroler {
         System.out.println("izvrsena operacija");
         return som.getClanovi();
     }
+    
+    public static AbstractObjekat zapamtiDolazak(AbstractObjekat dolazak){
+        SOZapamtiDolazak som = new SOZapamtiDolazak(dolazak);
+        
+        som.izvrsiOperaciju();
+        System.out.println("izvrsena operacija");
+        return som.getDolazak();
+    }
+    
+    
 }

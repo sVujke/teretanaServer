@@ -15,8 +15,12 @@ import java.util.List;
  */
 import domen.AbstractObjekat;
 import domen.Clan;
+import domen.Dolazak;
 import domen.Korisnik;
 import domen.Mesto;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 public class Test {
     public static void main(String[] args) throws Exception {
        /* List<AbstractObjekat> korisnici =  Kontroler.vratiKontrolera().vratiListuKorisnika();
@@ -34,13 +38,19 @@ public class Test {
        clan = Kontroler.vratiKontrolera().obrisiClana(clan);
        System.out.println(clan);
        */
-       AbstractObjekat clan = new Clan("", "Pera", "Peric", "p@p.rs", "adresa", "0644282784", new Mesto(null, null, "1"));
+       
+       /*AbstractObjekat clan = new Clan("", "Pera", "Peric", "p@p.rs", "adresa", "0644282784", new Mesto(null, null, "1"));
        
        List<AbstractObjekat> clanovi = Kontroler.vratiKontrolera().pretraziClanove(clan);
         for (AbstractObjekat abstractObjekat : clanovi) {
                 System.out.println(abstractObjekat);
         }
-       
-       
+       */
+       String string = "01.11.2011.";
+       DateFormat format = new SimpleDateFormat("dd.MM.yyyy.");
+       Date date = format.parse(string);
+       AbstractObjekat d = new Dolazak("2", date, "random", true, new Clan("1", null, null, null, null, null, null));
+       AbstractObjekat dolazakBack = Kontroler.vratiKontrolera().zapamtiDolazak(d);
+        System.out.println(dolazakBack);
     }
 }

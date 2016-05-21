@@ -102,12 +102,13 @@ public class DBBroker {
     
     public AbstractObjekat sacuvajObjekat(AbstractObjekat o) throws SQLException{
         String upit = "";
-        
+        System.out.println(o.vratiParametre());
         upit = "INSERT INTO "+ o.vratiImeTabele() + " VALUES ("+
                 o.vratiParametre() + ")";
         Statement s = konekcija.createStatement();
         s.executeUpdate(upit);
         s.close();
+        System.out.println("Uspesan INSERT");
         return o;
     }
     
