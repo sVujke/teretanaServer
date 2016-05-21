@@ -13,6 +13,7 @@ import so.SOPretraziClanove;
 import so.SOPrijaviKorisnika;
 import so.SOVratiListuKorisnika;
 import so.SOVratiListuMesta;
+import so.SOVratiListuPaketa;
 import so.SOZapamtiClana;
 import so.SOZapamtiDolazak;
 
@@ -84,6 +85,14 @@ public class Kontroler {
         som.izvrsiOperaciju();
         System.out.println("izvrsena operacija");
         return som.getDolazak();
+    }
+    
+    public static List<AbstractObjekat> vratiListuPaketa(){
+        SOVratiListuPaketa som = new SOVratiListuPaketa();
+        
+        som.izvrsiOperaciju();
+        System.out.println("izvrsena operacija");
+        return som.getPaketi();
     }
     
     

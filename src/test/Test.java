@@ -46,11 +46,19 @@ public class Test {
                 System.out.println(abstractObjekat);
         }
        */
+       /*
        String string = "01.11.2011.";
        DateFormat format = new SimpleDateFormat("dd.MM.yyyy.");
        Date date = format.parse(string);
        AbstractObjekat d = new Dolazak("2", date, "random", true, new Clan("1", null, null, null, null, null, null));
        AbstractObjekat dolazakBack = Kontroler.vratiKontrolera().zapamtiDolazak(d);
         System.out.println(dolazakBack);
+        */
+       
+       List<AbstractObjekat> paketi = Kontroler.vratiKontrolera().vratiListuPaketa();
+        for (AbstractObjekat abstractObjekat : paketi) {
+            System.out.println(abstractObjekat);
+        }
+        
     }
 }
