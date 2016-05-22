@@ -66,6 +66,12 @@ public class Test {
        AbstractObjekat r = Kontroler.vratiKontrolera().zapamtiPaket(a);
         System.out.println(r);
        */ 
+       
+       
+       AbstractObjekat a = new Korisnik("piter", null, null, "petigru");
+       AbstractObjekat r = Kontroler.vratiKontrolera().zapamtiPaket(a);
+        System.out.println(r);
+       
         
     }
 }

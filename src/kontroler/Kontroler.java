@@ -16,6 +16,7 @@ import so.SOVratiListuMesta;
 import so.SOVratiListuPaketa;
 import so.SOZapamtiClana;
 import so.SOZapamtiDolazak;
+import so.SOZapamtiKorisnika;
 import so.SOZapamtiPaket;
 
 /**
@@ -102,6 +103,14 @@ public class Kontroler {
         som.izvrsiOperaciju();
         System.out.println("izvrsena operacija");
         return som.getPaket();
+    }
+    
+    public static AbstractObjekat zapamtiKorisnika(AbstractObjekat korisnik){
+        SOZapamtiKorisnika som = new SOZapamtiKorisnika(korisnik);
+        
+        som.izvrsiOperaciju();
+        System.out.println("izvrsena operacija");
+        return som.getKorisnik();
     }
     
     

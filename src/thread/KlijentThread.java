@@ -87,10 +87,28 @@ public class KlijentThread extends Thread {
                     ServerTransfer st = new ServerTransfer();
             
                     try {
-                        System.out.println("VRATI_LISTU_KORISNIKA u CT");
+                        //System.out.println("VRATI_LISTU_KORISNIKA u CT");
                         List<AbstractObjekat> korisnici = kontroler.Kontroler.vratiListuKorisnika();
                         st.setUspesnostOperacije(1);
                         st.setPodaci(korisnici);
+                    } catch (Exception ex) {
+                        st.setUspesnostOperacije(-1);
+                        st.setException(ex);
+                        Logger.getLogger(KlijentThread.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    System.out.println("salje se odgovor");
+                    out.writeObject(st);
+                }
+                
+                if(operacija == Konstante.ZAPAMTI_KORISNIKA){  
+                    ServerTransfer st = new ServerTransfer();
+            
+                    try {
+                        //System.out.println("VRATI_LISTU_KORISNIKA u CT");
+                        Korisnik korisnik = (Korisnik) kt.getParametar();
+                        AbstractObjekat kor = kontroler.Kontroler.zapamtiKorisnika(korisnik);
+                        st.setUspesnostOperacije(1);
+                        st.setPodaci(kor);
                     } catch (Exception ex) {
                         st.setUspesnostOperacije(-1);
                         st.setException(ex);
