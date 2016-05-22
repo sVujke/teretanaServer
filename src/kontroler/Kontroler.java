@@ -9,6 +9,7 @@ import domen.AbstractObjekat;
 import domen.Korisnik;
 import java.util.List;
 import so.SOObrisiClana;
+import so.SOObrisiKorisnika;
 import so.SOPretraziClanove;
 import so.SOPrijaviKorisnika;
 import so.SOVratiListuKorisnika;
@@ -113,5 +114,12 @@ public class Kontroler {
         return som.getKorisnik();
     }
     
+    public static  AbstractObjekat obrisiKorisnika(AbstractObjekat korisnik){
+        SOObrisiKorisnika som = new SOObrisiKorisnika(korisnik);
+        
+        som.izvrsiOperaciju();
+        System.out.println("izvrsena operacija");
+        return som.getKorisnik();
+    }
     
 }
