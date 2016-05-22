@@ -25,11 +25,13 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 public class Test {
     public static void main(String[] args) throws Exception {
+        /*
         List<AbstractObjekat> korisnici =  Kontroler.vratiKontrolera().vratiListuKorisnika();
         
         for (AbstractObjekat ao : korisnici) {
             System.out.println(ao.vratiParametre());
         } 
+        */
       
        /*AbstractObjekat clan = new Clan("2", "Perah", "Peric", "p@p.rs", "adresa", "0644282784", new Mesto(null, null, "1"));
        clan = Kontroler.vratiKontrolera().zapamtiClana(clan);
@@ -73,6 +75,8 @@ public class Test {
        AbstractObjekat r = Kontroler.vratiKontrolera().zapamtiPaket(a);
         System.out.println(r);
        */
+       
+       /*
        String string = "01.11.2011.";
        DateFormat format = new SimpleDateFormat("dd.MM.yyyy.");
        Date date = format.parse(string);
@@ -80,5 +84,17 @@ public class Test {
                null, null, null, null, null), new Paket("1", null, null));
        AbstractObjekat pp = Kontroler.vratiKontrolera().zapamtiPretplatu(p);
         System.out.println(pp);
+        */
+        String string = "01.11.2011.";
+       DateFormat format = new SimpleDateFormat("dd.MM.yyyy.");
+       Date date = format.parse(string);
+        AbstractObjekat p = new Pretplata("1", date,new Clan("1", null,
+               null, null, null, null, null), new Paket(null, null, null));
+        List<AbstractObjekat> k = 
+                Kontroler.vratiKontrolera().pretraziPretplate(p);
+        
+        for (AbstractObjekat abstractObjekat : k) {
+            System.out.println(abstractObjekat);
+        }
     }
 }

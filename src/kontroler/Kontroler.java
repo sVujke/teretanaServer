@@ -11,6 +11,7 @@ import java.util.List;
 import so.SOObrisiClana;
 import so.SOObrisiKorisnika;
 import so.SOPretraziClanove;
+import so.SOPretraziPretplate;
 import so.SOPrijaviKorisnika;
 import so.SOVratiListuKorisnika;
 import so.SOVratiListuMesta;
@@ -129,6 +130,14 @@ public class Kontroler {
         som.izvrsiOperaciju();
         System.out.println("izvrsena operacija");
         return som.getPretplata();
+    }
+    
+    public static List<AbstractObjekat> pretraziPretplate(AbstractObjekat pretplata){
+        SOPretraziPretplate som = new SOPretraziPretplate(pretplata);
+        
+        som.izvrsiOperaciju();
+        System.out.println("izvrsena operacija");
+        return som.getPretplate();
     }
     
 }
