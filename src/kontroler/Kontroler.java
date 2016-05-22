@@ -19,6 +19,7 @@ import so.SOZapamtiClana;
 import so.SOZapamtiDolazak;
 import so.SOZapamtiKorisnika;
 import so.SOZapamtiPaket;
+import so.SOZapamtiPretplatu;
 
 /**
  *
@@ -120,6 +121,14 @@ public class Kontroler {
         som.izvrsiOperaciju();
         System.out.println("izvrsena operacija");
         return som.getKorisnik();
+    }
+    
+    public static AbstractObjekat zapamtiPretplatu(AbstractObjekat pretplata){
+        SOZapamtiPretplatu som = new SOZapamtiPretplatu(pretplata);
+        
+        som.izvrsiOperaciju();
+        System.out.println("izvrsena operacija");
+        return som.getPretplata();
     }
     
 }

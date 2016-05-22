@@ -19,6 +19,7 @@ import domen.Dolazak;
 import domen.Korisnik;
 import domen.Mesto;
 import domen.Paket;
+import domen.Pretplata;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -67,11 +68,17 @@ public class Test {
         System.out.println(r);
        */ 
        
-       
+       /*
        AbstractObjekat a = new Korisnik("piter", null, null, "petigru");
        AbstractObjekat r = Kontroler.vratiKontrolera().zapamtiPaket(a);
         System.out.println(r);
-       
-        
+       */
+       String string = "01.11.2011.";
+       DateFormat format = new SimpleDateFormat("dd.MM.yyyy.");
+       Date date = format.parse(string);
+       AbstractObjekat p = new Pretplata("1", date,new Clan("1", null,
+               null, null, null, null, null), new Paket("1", null, null));
+       AbstractObjekat pp = Kontroler.vratiKontrolera().zapamtiPretplatu(p);
+        System.out.println(pp);
     }
 }
