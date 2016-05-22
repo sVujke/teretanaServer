@@ -82,6 +82,23 @@ public class KlijentThread extends Thread {
                     //AbstractObjekat korisnik = 
                     //AbstractObjekat korisnik = kontroler.Kontroler.prijaviKorisnika(korisnik);
                 }
+                
+                if(operacija == Konstante.VRATI_LISTU_KORISNIKA){  
+                    ServerTransfer st = new ServerTransfer();
+            
+                    try {
+                        System.out.println("VRATI_LISTU_KORISNIKA u CT");
+                        List<AbstractObjekat> korisnici = kontroler.Kontroler.vratiListuKorisnika();
+                        st.setUspesnostOperacije(1);
+                        st.setPodaci(korisnici);
+                    } catch (Exception ex) {
+                        st.setUspesnostOperacije(-1);
+                        st.setException(ex);
+                        Logger.getLogger(KlijentThread.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    System.out.println("salje se odgovor");
+                    out.writeObject(st);
+                }
             }
             
          

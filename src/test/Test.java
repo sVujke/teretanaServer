@@ -24,11 +24,11 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 public class Test {
     public static void main(String[] args) throws Exception {
-       /* List<AbstractObjekat> korisnici =  Kontroler.vratiKontrolera().vratiListuKorisnika();
+        List<AbstractObjekat> korisnici =  Kontroler.vratiKontrolera().vratiListuKorisnika();
         
         for (AbstractObjekat ao : korisnici) {
             System.out.println(ao.vratiParametre());
-        } */
+        } 
       
        /*AbstractObjekat clan = new Clan("2", "Perah", "Peric", "p@p.rs", "adresa", "0644282784", new Mesto(null, null, "1"));
        clan = Kontroler.vratiKontrolera().zapamtiClana(clan);
@@ -61,11 +61,11 @@ public class Test {
             System.out.println(abstractObjekat);
         }
         */
-       
+       /*
        AbstractObjekat a = new Paket("3", "srednji", "3010");
        AbstractObjekat r = Kontroler.vratiKontrolera().zapamtiPaket(a);
         System.out.println(r);
-        
+       */ 
         
     }
 }
