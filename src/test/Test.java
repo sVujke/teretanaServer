@@ -20,6 +20,7 @@ import domen.Korisnik;
 import domen.Mesto;
 import domen.Paket;
 import domen.Pretplata;
+import java.io.File;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -85,7 +86,7 @@ public class Test {
        AbstractObjekat pp = Kontroler.vratiKontrolera().zapamtiPretplatu(p);
         System.out.println(pp);
         */
-        String string = "01.11.2011.";
+      /*  String string = "01.11.2011.";
        DateFormat format = new SimpleDateFormat("dd.MM.yyyy.");
        Date date = format.parse(string);
         AbstractObjekat p = new Pretplata("1", date,new Clan("1", null,
@@ -95,6 +96,8 @@ public class Test {
         
         for (AbstractObjekat abstractObjekat : k) {
             System.out.println(abstractObjekat);
-        }
+        } */
+      
+      System.out.println(new File(".").getAbsolutePath());
     }
 }

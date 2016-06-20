@@ -20,6 +20,7 @@ public class FrmStart extends javax.swing.JFrame {
      */
     public FrmStart() {
         initComponents();
+        jbtUpravljanjeKorisnicima.setVisible(false);
     }
 
     /**
@@ -33,6 +34,7 @@ public class FrmStart extends javax.swing.JFrame {
 
         jlblStatusServera = new javax.swing.JLabel();
         jbtPokreniServer = new javax.swing.JButton();
+        jbtUpravljanjeKorisnicima = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -51,6 +53,14 @@ public class FrmStart extends javax.swing.JFrame {
             }
         });
 
+        jbtUpravljanjeKorisnicima.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jbtUpravljanjeKorisnicima.setText("Upravljanje korisnicima");
+        jbtUpravljanjeKorisnicima.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtUpravljanjeKorisnicimaActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -61,8 +71,10 @@ public class FrmStart extends javax.swing.JFrame {
                         .addGap(82, 82, 82)
                         .addComponent(jlblStatusServera, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(133, 133, 133)
-                        .addComponent(jbtPokreniServer, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(113, 113, 113)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jbtPokreniServer, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jbtUpravljanjeKorisnicima))))
                 .addContainerGap(82, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -70,9 +82,11 @@ public class FrmStart extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(84, 84, 84)
                 .addComponent(jlblStatusServera, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(57, 57, 57)
+                .addGap(18, 18, 18)
+                .addComponent(jbtUpravljanjeKorisnicima, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(28, 28, 28)
                 .addComponent(jbtPokreniServer, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(76, Short.MAX_VALUE))
+                .addContainerGap(50, Short.MAX_VALUE))
         );
 
         pack();
@@ -84,7 +98,14 @@ public class FrmStart extends javax.swing.JFrame {
         jlblStatusServera.setForeground(Color.GREEN);
         jlblStatusServera.setText("Server je pokrenut");
         jbtPokreniServer.setEnabled(false);
+        jbtUpravljanjeKorisnicima.setVisible(true);
     }//GEN-LAST:event_jbtPokreniServerActionPerformed
+
+    private void jbtUpravljanjeKorisnicimaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtUpravljanjeKorisnicimaActionPerformed
+        // TODO add your handling code here:
+        UpravljanjeKorisnicimaFrm frm = new UpravljanjeKorisnicimaFrm();
+        frm.setVisible(true);
+    }//GEN-LAST:event_jbtUpravljanjeKorisnicimaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -124,6 +145,7 @@ public class FrmStart extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jbtPokreniServer;
+    private javax.swing.JButton jbtUpravljanjeKorisnicima;
     private javax.swing.JLabel jlblStatusServera;
     // End of variables declaration//GEN-END:variables
 }

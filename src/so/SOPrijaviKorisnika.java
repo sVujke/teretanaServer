@@ -32,6 +32,8 @@ public class SOPrijaviKorisnika extends AbstractSO {
             Korisnik kor = (Korisnik) aKorisnik;
             if(kor.equals(korUserPas)){
                 korisnik = kor;
+                Korisnik k = (Korisnik) korisnik;
+                k.setStatusKorisnika("online");
                 System.out.println("Pronadjen");
                 nema = true;
                 break;
