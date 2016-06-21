@@ -178,7 +178,8 @@ public class FrmStart extends javax.swing.JFrame {
 
     private void jbtPodesavanjaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtPodesavanjaActionPerformed
         // TODO add your handling code here:
-        //Frm
+        FrmKonfiguracija konfig = new FrmKonfiguracija();
+        konfig.setVisible(true);
     }//GEN-LAST:event_jbtPodesavanjaActionPerformed
 
     /**
