@@ -136,7 +136,7 @@ public class FrmUpravljanjeKorisnicima extends javax.swing.JFrame {
             red = jTable1.getSelectedRow();
             Korisnik k = tbl.vratiListu().get(red);
         } catch(Exception e){
-            JOptionPane.showMessageDialog(rootPane, "Nije odabran korisnik za brisanje");
+            JOptionPane.showMessageDialog(rootPane, "Nije odabran korisnik za brisanje", "Greška!", JOptionPane.ERROR_MESSAGE, null);
             return;
         }
         
