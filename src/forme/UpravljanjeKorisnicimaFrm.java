@@ -48,7 +48,6 @@ public class UpravljanjeKorisnicimaFrm extends javax.swing.JFrame {
         jTable1 = new javax.swing.JTable();
         jbtDodaj = new javax.swing.JToggleButton();
         jbtIzbrisi = new javax.swing.JToggleButton();
-        jbtSacuvaj = new javax.swing.JToggleButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -80,8 +79,6 @@ public class UpravljanjeKorisnicimaFrm extends javax.swing.JFrame {
             }
         });
 
-        jbtSacuvaj.setText("Sačuvaj promene");
-
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel1.setText("Korisnici aplikacije");
 
@@ -100,8 +97,7 @@ public class UpravljanjeKorisnicimaFrm extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 57, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jbtDodaj, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jbtIzbrisi, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jbtSacuvaj, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jbtIzbrisi, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(39, 39, 39))))
         );
         layout.setVerticalGroup(
@@ -110,13 +106,11 @@ public class UpravljanjeKorisnicimaFrm extends javax.swing.JFrame {
                 .addGap(41, 41, 41)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jbtDodaj)
                         .addGap(35, 35, 35)
-                        .addComponent(jbtIzbrisi)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jbtSacuvaj))
+                        .addComponent(jbtIzbrisi))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(44, 44, 44))
         );
@@ -142,7 +136,7 @@ public class UpravljanjeKorisnicimaFrm extends javax.swing.JFrame {
             red = jTable1.getSelectedRow();
             Korisnik k = tbl.vratiListu().get(red);
         } catch(Exception e){
-            JOptionPane.showMessageDialog(rootPane, "Nisj odabran korisnik za brisanje");
+            JOptionPane.showMessageDialog(rootPane, "Nije odabran korisnik za brisanje");
             return;
         }
         
@@ -195,7 +189,6 @@ public class UpravljanjeKorisnicimaFrm extends javax.swing.JFrame {
     private javax.swing.JTable jTable1;
     private javax.swing.JToggleButton jbtDodaj;
     private javax.swing.JToggleButton jbtIzbrisi;
-    private javax.swing.JToggleButton jbtSacuvaj;
     // End of variables declaration//GEN-END:variables
 
     private void srediTabelu() {

@@ -150,4 +150,10 @@ public class KlijentThread extends Thread {
     
     
     }
-}
+
+    public Socket getSoket() {
+        return s;
+    }
+        ///throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+

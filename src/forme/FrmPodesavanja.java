@@ -61,7 +61,7 @@ public class FrmPodesavanja extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Podesavanja parametara baze");
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Parametri baze"));
+        jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         jLabel1.setText("SUBP:");
 
@@ -76,7 +76,7 @@ public class FrmPodesavanja extends javax.swing.JFrame {
 
         jLabel6.setText("Port:");
 
-        jLabel3.setText("Šema:");
+        jLabel3.setText("DB naziv:");
 
         jLabel4.setText("Korisnicko ime:");
 
