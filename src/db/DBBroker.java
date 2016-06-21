@@ -7,6 +7,8 @@ package db;
 
 import domen.AbstractObjekat;
 import domen.Mesto;
+import java.io.FileInputStream;
+import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -14,6 +16,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -24,21 +27,54 @@ import java.util.logging.Logger;
 public class DBBroker {
     private Connection konekcija;
     private static DBBroker instance;
+    Properties props;
+    InputStream input;
 
     public DBBroker() {
+         props = new Properties();
+         input = null;
+        try {
+            System.out.println(System.getProperty("user.home"));
+            String prop = System.getProperty("user.home") + "\\props.properties";
+            
+            input = new FileInputStream(prop);
+            props.load(input);
+            System.out.println(props);
+            
+            
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        } 
     }
     
     
     
     public void konektujSe(){
+        
         try { 
-            Class.forName("com.mysql.jdbc.Driver");
+            
+            String prefix = props.getProperty("prefix");
+            System.out.println("Prefiks: "+prefix);
+           System.out.println(props.getProperty(prefix+"_drajver"));
+            System.out.println(props.getProperty(prefix+"_url"));
+            Class.forName(props.getProperty(prefix+"_drajver"));
+            System.out.println("Driver je ucitan");
+            String url = props.getProperty(prefix+"_url");
+            String user = props.getProperty(prefix+"_korisnickoIme");
+            String sifra = props.getProperty(prefix+"_sifra");
+            konekcija = DriverManager.getConnection(url, user, sifra);
+            konekcija.setAutoCommit(false);
+            System.out.println("Konekcija je uspostavljena");
+            
+            
+            
+           /* Class.forName("com.mysql.jdbc.Driver");
             
             String url = util.Konstante.url;
             String user = util.Konstante.user;
-            String password = util.Konstante.pass;
+            String password = util.Konstante.pass; 
             
-            konekcija = DriverManager.getConnection(url, user, password);
+            konekcija = DriverManager.getConnection(url, user, password);*/
             konekcija.setAutoCommit(false);
             System.out.println("Konekcija uspesna");
      
