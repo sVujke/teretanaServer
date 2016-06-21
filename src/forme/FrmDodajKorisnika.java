@@ -19,13 +19,13 @@ import model.TblModelKorisnik;
  *
  * @author vujke
  */
-public class DodajKorisnikaFrm extends javax.swing.JPanel {
+public class FrmDodajKorisnika extends javax.swing.JPanel {
 
     TblModelKorisnik tbl;
     /**
      * Creates new form DodajKorisnikaFrm
      */
-    public DodajKorisnikaFrm(TblModelKorisnik tbl) {
+    public FrmDodajKorisnika(TblModelKorisnik tbl) {
         initComponents();
         this.tbl = tbl;
     }

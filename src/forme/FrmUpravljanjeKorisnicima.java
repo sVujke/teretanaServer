@@ -7,7 +7,7 @@ package forme;
 
 import domen.AbstractObjekat;
 import domen.Korisnik;
-import forme.DodajKorisnikaFrm;
+import forme.FrmDodajKorisnika;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -22,14 +22,14 @@ import model.TblModelKorisnik;
  *
  * @author vujke
  */
-public class UpravljanjeKorisnicimaFrm extends javax.swing.JFrame {
+public class FrmUpravljanjeKorisnicima extends javax.swing.JFrame {
 
     TblModelKorisnik tbl;
 
     /**
      * Creates new form UpravljanjeKorisnicimaFrm
      */
-    public UpravljanjeKorisnicimaFrm() {
+    public FrmUpravljanjeKorisnicima() {
         initComponents();
         System.out.println("Sredi tabelu sledi");
         srediTabelu();
@@ -120,7 +120,7 @@ public class UpravljanjeKorisnicimaFrm extends javax.swing.JFrame {
 
     private void jbtDodajActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtDodajActionPerformed
         // TODO add your handling code here:
-        DodajKorisnikaFrm frm = new DodajKorisnikaFrm(tbl);
+        FrmDodajKorisnika frm = new FrmDodajKorisnika(tbl);
         JDialog dialog = new JDialog(this, "Dodaj korisnika");
         dialog.add(frm);
         dialog.pack();
@@ -165,20 +165,21 @@ public class UpravljanjeKorisnicimaFrm extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(UpravljanjeKorisnicimaFrm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmUpravljanjeKorisnicima.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(UpravljanjeKorisnicimaFrm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmUpravljanjeKorisnicima.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(UpravljanjeKorisnicimaFrm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmUpravljanjeKorisnicima.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(UpravljanjeKorisnicimaFrm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmUpravljanjeKorisnicima.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new UpravljanjeKorisnicimaFrm().setVisible(true);
+                new FrmUpravljanjeKorisnicima().setVisible(true);
             }
         });
     }

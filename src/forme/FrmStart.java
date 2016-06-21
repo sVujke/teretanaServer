@@ -172,12 +172,13 @@ public class FrmStart extends javax.swing.JFrame {
 
     private void jbtUpravljanjeKorisnicimaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtUpravljanjeKorisnicimaActionPerformed
         // TODO add your handling code here:
-        UpravljanjeKorisnicimaFrm frm = new UpravljanjeKorisnicimaFrm();
+        FrmUpravljanjeKorisnicima frm = new FrmUpravljanjeKorisnicima();
         frm.setVisible(true);
     }//GEN-LAST:event_jbtUpravljanjeKorisnicimaActionPerformed
 
     private void jbtPodesavanjaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtPodesavanjaActionPerformed
         // TODO add your handling code here:
+        //Frm
     }//GEN-LAST:event_jbtPodesavanjaActionPerformed
 
     /**
