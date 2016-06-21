@@ -139,7 +139,7 @@ public class FrmDodajKorisnika extends javax.swing.JPanel {
         for (Korisnik korisnik : korisnici) {
             if(k.getUsername().equalsIgnoreCase(korisnik.getUsername()) || k.getEmail().equalsIgnoreCase(korisnik.getEmail())){
                 neceMoci = true;
-                JOptionPane.showConfirmDialog(jtxtIme, "U bazi već postoji"
+                JOptionPane.showMessageDialog(jtxtIme, "U bazi već postoji"
                         + " korisnik sa takvim korisničkim imenom"
                         + "ili e-mail adresom.");
             }
