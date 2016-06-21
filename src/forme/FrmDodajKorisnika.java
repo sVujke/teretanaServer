@@ -121,15 +121,20 @@ public class FrmDodajKorisnika extends javax.swing.JPanel {
         String password = jtxtPassword.getText();
         
         if(ime.length() == 0){
-            JOptionPane.showMessageDialog(jtxtIme, "Unesite ime");
+            JOptionPane.showMessageDialog(jtxtIme, "Unesite ime", "Greška!", JOptionPane.ERROR_MESSAGE, null);
+            return;
         } else if(email.length() == 0){
-            JOptionPane.showMessageDialog(jtxtIme, "Unesite e-mail");
+            JOptionPane.showMessageDialog(jtxtIme, "Unesite e-mail", "Greška!", JOptionPane.ERROR_MESSAGE, null);
+            return;
         } else if(!isValidEmailAddress(email)){
-            JOptionPane.showMessageDialog(jtxtIme, "Unesite validan e-mail");
+            JOptionPane.showMessageDialog(jtxtIme, "Unesite validan e-mail", "Greška!", JOptionPane.ERROR_MESSAGE, null);
+            return;
         } else if(username.length() == 0){
-            JOptionPane.showMessageDialog(jtxtIme, "Unesite korisničko ime");
+            JOptionPane.showMessageDialog(jtxtIme, "Unesite korisničko ime", "Greška!", JOptionPane.ERROR_MESSAGE, null);
+            return;
         } else if(password.length() == 0) {
-            JOptionPane.showMessageDialog(jtxtIme, "Unesite šifru");
+            JOptionPane.showMessageDialog(jtxtIme, "Unesite šifru", "Greška!", JOptionPane.ERROR_MESSAGE, null);
+            return;
         }
         
         Korisnik k = new Korisnik(ime, email, password, username);
@@ -139,9 +144,12 @@ public class FrmDodajKorisnika extends javax.swing.JPanel {
         for (Korisnik korisnik : korisnici) {
             if(k.getUsername().equalsIgnoreCase(korisnik.getUsername()) || k.getEmail().equalsIgnoreCase(korisnik.getEmail())){
                 neceMoci = true;
+                /*JOptionPane.showMessageDialog(jtxtIme, "U bazi već postoji"
+                        + " korisnik sa takvim korisničkim imenom"
+                        + "ili e-mail adresom.");*/
                 JOptionPane.showMessageDialog(jtxtIme, "U bazi već postoji"
                         + " korisnik sa takvim korisničkim imenom"
-                        + "ili e-mail adresom.");
+                        + "ili e-mail adresom.", "Greška!", JOptionPane.ERROR_MESSAGE, null);
             }
         }
         
@@ -150,6 +158,7 @@ public class FrmDodajKorisnika extends javax.swing.JPanel {
                 Kontroler.vratiKontrolera().zapamtiKorisnika(k);
                 tbl.dodajUTabelu(k);
                 JOptionPane.showMessageDialog(jtxtIme, "Dodat je korisnik "+k.getIme());
+                //JOptionPane.showMessageDialog(jtxtIme, username, ime, JOptionPane.INFORMATION_MESSAGE, null);
             
         }
     }//GEN-LAST:event_jbtDodajActionPerformed
