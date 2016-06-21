@@ -21,12 +21,12 @@ import javax.swing.JOptionPane;
  *
  * @author Aco Kandic
  */
-public class FrmPodesavanja extends javax.swing.JFrame {
+public class FrmKonfiguracija extends javax.swing.JFrame {
 
     /**
      * Creates new form FrmPodesavanja
      */
-    public FrmPodesavanja() {
+    public FrmKonfiguracija() {
         initComponents();
         centrirajFormu();
         cbSUBP.setSelectedIndex(0);
@@ -260,20 +260,21 @@ public class FrmPodesavanja extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FrmPodesavanja.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmKonfiguracija.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FrmPodesavanja.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmKonfiguracija.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FrmPodesavanja.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmKonfiguracija.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FrmPodesavanja.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmKonfiguracija.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FrmPodesavanja().setVisible(true);
+                new FrmKonfiguracija().setVisible(true);
             }
         });
     }
