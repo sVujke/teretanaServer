@@ -13,6 +13,7 @@ import so.SOObrisiKorisnika;
 import so.SOPretraziClanove;
 import so.SOPretraziPretplate;
 import so.SOPrijaviKorisnika;
+import so.SOVratiListuClanova;
 import so.SOVratiListuKorisnika;
 import so.SOVratiListuMesta;
 import so.SOVratiListuPaketa;
@@ -50,6 +51,13 @@ public class Kontroler {
         
         som.izvrsiOperaciju();
         return som.getListaKorisnika();
+    }
+    
+    public static List<AbstractObjekat> vratiListuClanova(){
+        SOVratiListuClanova som = new SOVratiListuClanova();
+        
+        som.izvrsiOperaciju();
+        return som.getListaClanova();
     }
     
     public static AbstractObjekat prijaviKorisnika(Korisnik k) throws Exception{

@@ -40,14 +40,16 @@ public class KlijentThread extends Thread {
             //hvatanje objekta    
             in = new ObjectInputStream(s.getInputStream());
             ObjectOutputStream out = new ObjectOutputStream(s.getOutputStream());
+            
             // ovde treba da radim obradu zahtev sa servera :)
             while(true){
             KlijentTransfer kt = (KlijentTransfer) in.readObject();
             int operacija = kt.getOperacija();
+            ServerTransfer st = new ServerTransfer();
             
             
                 if(operacija == Konstante.VRATI_LISTU_MESTA){  
-                    ServerTransfer st = new ServerTransfer();
+//                    ServerTransfer st = new ServerTransfer();
             
                     try {
                         List<AbstractObjekat> mesta = kontroler.Kontroler.vratiListuMesta();
@@ -62,8 +64,40 @@ public class KlijentThread extends Thread {
                     out.writeObject(st);
                 }
                 
+                 if(operacija == Konstante.VRATI_LISTU_PAKETA){  
+//                    ServerTransfer st = new ServerTransfer();
+            
+                    try {
+                        List<AbstractObjekat> paketi = kontroler.Kontroler.vratiListuPaketa();
+                        st.setUspesnostOperacije(1);
+                        st.setPodaci(paketi);
+                    } catch (Exception ex) {
+                        st.setUspesnostOperacije(-1);
+                        st.setException(ex);
+                        Logger.getLogger(KlijentThread.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    
+                    out.writeObject(st);
+                }
+                 
+                if(operacija == Konstante.VRATI_LISTU_CLANOVA){  
+//                    ServerTransfer st = new ServerTransfer();
+            
+                    try {
+                        List<AbstractObjekat> clanovi = kontroler.Kontroler.vratiListuClanova();
+                        st.setUspesnostOperacije(1);
+                        st.setPodaci(clanovi);
+                    } catch (Exception ex) {
+                        st.setUspesnostOperacije(-1);
+                        st.setException(ex);
+                        Logger.getLogger(KlijentThread.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    
+                    out.writeObject(st);
+                } 
+                
                 if(operacija == Konstante.PRIJAVI_KORISNIKA){
-                    ServerTransfer st = new ServerTransfer();
+//                    sServerTransfer st = new ServerTransfer();
                     
                     try{
                         Korisnik korisnik = (Korisnik) kt.getParametar();
@@ -84,7 +118,7 @@ public class KlijentThread extends Thread {
                 }
                 
                 if(operacija == Konstante.VRATI_LISTU_KORISNIKA){  
-                    ServerTransfer st = new ServerTransfer();
+                    //ServerTransfer st = new ServerTransfer();
             
                     try {
                         //System.out.println("VRATI_LISTU_KORISNIKA u CT");
@@ -101,7 +135,7 @@ public class KlijentThread extends Thread {
                 }
                 
                 if(operacija == Konstante.ZAPAMTI_KORISNIKA){  
-                    ServerTransfer st = new ServerTransfer();
+                    //ServerTransfer st = new ServerTransfer();
             
                     try {
                         //System.out.println("VRATI_LISTU_KORISNIKA u CT");
@@ -119,7 +153,7 @@ public class KlijentThread extends Thread {
                 }
                 
                 if(operacija == Konstante.OBRISI_KORISNIKA){  
-                    ServerTransfer st = new ServerTransfer();
+                    //ServerTransfer st = new ServerTransfer();
             
                     try {
                         //System.out.println("VRATI_LISTU_KORISNIKA u CT");
@@ -135,6 +169,8 @@ public class KlijentThread extends Thread {
                     System.out.println("salje se odgovor");
                     out.writeObject(st);
                 }
+                
+                
             }
             
          

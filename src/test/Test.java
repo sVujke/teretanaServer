@@ -59,12 +59,12 @@ public class Test {
        AbstractObjekat dolazakBack = Kontroler.vratiKontrolera().zapamtiDolazak(d);
         System.out.println(dolazakBack);
         */
-       /*
+       
        List<AbstractObjekat> paketi = Kontroler.vratiKontrolera().vratiListuPaketa();
         for (AbstractObjekat abstractObjekat : paketi) {
             System.out.println(abstractObjekat);
         }
-        */
+        
        /*
        AbstractObjekat a = new Paket("3", "srednji", "3010");
        AbstractObjekat r = Kontroler.vratiKontrolera().zapamtiPaket(a);
@@ -98,6 +98,6 @@ public class Test {
             System.out.println(abstractObjekat);
         } */
       
-      System.out.println(new File(".").getAbsolutePath());
+      //System.out.println(new File(".").getAbsolutePath());
     }
 }
