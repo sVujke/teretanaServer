@@ -13,7 +13,9 @@ import so.SOObrisiKorisnika;
 import so.SOPretraziClanove;
 import so.SOPretraziPretplate;
 import so.SOPrijaviKorisnika;
+import so.SOVratiClanaPoPK;
 import so.SOVratiListuClanova;
+import so.SOVratiListuDolazaka;
 import so.SOVratiListuKorisnika;
 import so.SOVratiListuMesta;
 import so.SOVratiListuPaketa;
@@ -30,6 +32,9 @@ import so.SOZapamtiPretplatu;
 public class Kontroler {
     
     private static Kontroler instance;
+
+   
+    private List<AbstractObjekat> listaKorisnika;
     
     public static Kontroler vratiKontrolera(){
         if(instance == null){
@@ -51,6 +56,13 @@ public class Kontroler {
         
         som.izvrsiOperaciju();
         return som.getListaKorisnika();
+    }
+    
+    public static List<AbstractObjekat> vratiListuDolazaka(){
+        SOVratiListuDolazaka som = new SOVratiListuDolazaka();
+        
+        som.izvrsiOperaciju();
+        return som.getListaDolazaka();
     }
     
     public static List<AbstractObjekat> vratiListuClanova(){
@@ -84,8 +96,8 @@ public class Kontroler {
         return som.getClan();
     }
     
-    public static  List<AbstractObjekat> pretraziClanove(AbstractObjekat clan){
-        SOPretraziClanove som = new SOPretraziClanove(clan);
+    public static  List<AbstractObjekat> pretraziClanove(String pretraga){
+        SOPretraziClanove som = new SOPretraziClanove(pretraga);
         
         som.izvrsiOperaciju();
         System.out.println("izvrsena operacija");
@@ -146,6 +158,26 @@ public class Kontroler {
         som.izvrsiOperaciju();
         System.out.println("izvrsena operacija");
         return som.getPretplate();
+    }
+
+    public List<AbstractObjekat> getListaKorisnika() {
+        if(listaKorisnika == null){
+            listaKorisnika = vratiListuKorisnika();
+        }
+        return listaKorisnika;
+    }
+
+    public void setListaKorisnika(List<AbstractObjekat> listaKorisnika) {
+        this.listaKorisnika = listaKorisnika;
+    }
+    
+     public static AbstractObjekat vratiClanaPoPK(String id) {
+        SOVratiClanaPoPK som = new SOVratiClanaPoPK(id);
+        
+        som.izvrsiOperaciju();
+        System.out.println("izvrsena operacija");
+        return som.getClan();
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 }

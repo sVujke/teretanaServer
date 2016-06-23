@@ -8,6 +8,7 @@ package so;
 import domen.AbstractObjekat;
 import domen.Korisnik;
 import java.util.List;
+import kontroler.Kontroler;
 
 /**
  *
@@ -33,7 +34,9 @@ public class SOPrijaviKorisnika extends AbstractSO {
             if(kor.equals(korUserPas)){
                 korisnik = kor;
                 Korisnik k = (Korisnik) korisnik;
-                k.setStatusKorisnika("online");
+                //k.setStatusKorisnika("online");
+                int indeks = Kontroler.vratiKontrolera().getListaKorisnika().indexOf(k);
+                ((Korisnik)Kontroler.vratiKontrolera().getListaKorisnika().get(indeks)).setStatusKorisnika("online");
                 System.out.println("Pronadjen");
                 nema = true;
                 break;

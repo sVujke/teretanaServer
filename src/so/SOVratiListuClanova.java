@@ -7,7 +7,11 @@ package so;
 
 import domen.AbstractObjekat;
 import domen.Clan;
+import domen.Mesto;
+import java.sql.SQLException;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -18,6 +22,7 @@ public class SOVratiListuClanova extends AbstractSO{
     @Override
     protected void izvrsiKonkretnuOperaciju() {
         listaClanova = db.vratiSveObjekte(new Clan());
+        ucitajMesta();
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
@@ -33,6 +38,20 @@ public class SOVratiListuClanova extends AbstractSO{
 
     public List<AbstractObjekat> getListaClanova() {
         return listaClanova;
+    }
+
+    private void ucitajMesta() {
+        for (AbstractObjekat abs : listaClanova) {
+            try {
+                Clan cl = (Clan) abs;
+                cl.setMesto((Mesto) db.vratiObjekatPoKljucu(new Mesto(), Integer.parseInt(cl.getMesto().getMestoid())));
+                System.out.println(cl.getMesto());
+            }
+            //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            catch (SQLException ex) {
+                Logger.getLogger(SOVratiListuClanova.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
     }
     
     

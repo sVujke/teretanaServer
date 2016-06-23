@@ -15,28 +15,30 @@ import java.util.List;
  * @author vujke
  */
 public class SOPretraziClanove extends AbstractSO {
-    
-    private List<AbstractObjekat> clanovi = new ArrayList<>();
-    private AbstractObjekat clan; 
 
-    public SOPretraziClanove(AbstractObjekat clan) {
+    private List<AbstractObjekat> clanovi = new ArrayList<>();
+    private String pretraga;
+
+    public SOPretraziClanove(String pretraga) {
         //this.clanovi = clanovi;
-        this.clan = clan;
+        this.pretraga = pretraga;
     }
-    
-    
+
     @Override
     protected void izvrsiKonkretnuOperaciju() {
-        List<AbstractObjekat> sviClanovi = db.vratiSveObjekte(clan);
+//        List<AbstractObjekat> sviClanovi = db.vratiSveObjekte(new Clan());
+        SOVratiListuClanova sov = new SOVratiListuClanova();
+        sov.izvrsiOperaciju();
+        List<AbstractObjekat> sviClanovi = sov.getListaClanova();
         for (AbstractObjekat clanIzBaze : sviClanovi) {
             Clan clb = (Clan) clanIzBaze;
-            System.out.println(clb);
-            Clan c = (Clan) clan;
-            System.out.println(c);
-            
-            if(clb.getIme().equals(c.getIme())){
-                AbstractObjekat cb = clb;
-                clanovi.add(cb);
+
+            if (clb.getIme().contains(pretraga) || clb.getAdresa().contains(pretraga)
+                    || clb.getEmail().contains(pretraga)
+                    || clb.getMesto().getNaziv().contains(pretraga)
+                    || clb.getPrezime().contains(pretraga)) {
+
+                clanovi.add(clb);
             }
         }
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
@@ -56,8 +58,4 @@ public class SOPretraziClanove extends AbstractSO {
         return clanovi;
     }
 
-    public AbstractObjekat getClan() {
-        return clan;
-    }
-    
 }

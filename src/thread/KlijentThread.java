@@ -96,6 +96,24 @@ public class KlijentThread extends Thread {
                     out.writeObject(st);
                 } 
                 
+                if(operacija == Konstante.PRETRAZI_CLANOVE){  
+//                    ServerTransfer st = new ServerTransfer();
+            
+                    try {
+                        
+                        List<AbstractObjekat> clanovi = kontroler.Kontroler.pretraziClanove((String) kt.getParametar());
+                        st.setUspesnostOperacije(1);
+                        System.out.println("DUZINNA THREAD" + clanovi.size());
+                        st.setPodaci(clanovi);
+                    } catch (Exception ex) {
+                        st.setUspesnostOperacije(-1);
+                        st.setException(ex);
+                        Logger.getLogger(KlijentThread.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    
+                    out.writeObject(st);
+                } 
+                
                 if(operacija == Konstante.PRIJAVI_KORISNIKA){
 //                    sServerTransfer st = new ServerTransfer();
                     
@@ -170,6 +188,23 @@ public class KlijentThread extends Thread {
                     out.writeObject(st);
                 }
                 
+                if(operacija == Konstante.VRATI_CLANA_PK){  
+                    //ServerTransfer st = new ServerTransfer();
+            
+                    try {
+                        //System.out.println("VRATI_LISTU_KORISNIKA u CT");
+                        String id = (String) kt.getParametar();
+                        AbstractObjekat clan = kontroler.Kontroler.vratiClanaPoPK(id);
+                        st.setUspesnostOperacije(1);
+                        st.setPodaci(clan);
+                    } catch (Exception ex) {
+                        st.setUspesnostOperacije(-1);
+                        st.setException(ex);
+                        Logger.getLogger(KlijentThread.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    System.out.println("salje se odgovor");
+                    out.writeObject(st);
+                }
                 
             }
             
