@@ -21,7 +21,8 @@ public class SOPretraziClanove extends AbstractSO {
 
     public SOPretraziClanove(String pretraga) {
         //this.clanovi = clanovi;
-        this.pretraga = pretraga;
+        this.pretraga = pretraga.toLowerCase();
+        
     }
 
     @Override
@@ -33,10 +34,11 @@ public class SOPretraziClanove extends AbstractSO {
         for (AbstractObjekat clanIzBaze : sviClanovi) {
             Clan clb = (Clan) clanIzBaze;
 
-            if (clb.getIme().contains(pretraga) || clb.getAdresa().contains(pretraga)
-                    || clb.getEmail().contains(pretraga)
-                    || clb.getMesto().getNaziv().contains(pretraga)
-                    || clb.getPrezime().contains(pretraga)) {
+            if (clb.getIme().toLowerCase().contains(pretraga) || clb.getAdresa().toLowerCase().contains(pretraga)
+                    || clb.getEmail().toLowerCase().contains(pretraga)
+                    || clb.getMesto().getNaziv().toLowerCase().contains(pretraga)
+                    || clb.getPrezime().toLowerCase().contains(pretraga)||
+                    clb.getTelefon().toLowerCase().contains(pretraga)) {
 
                 clanovi.add(clb);
             }
