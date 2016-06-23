@@ -109,6 +109,33 @@ public class DBBroker {
             System.out.println("Neuspesan rollback.");
         }
     }
+    
+    public AbstractObjekat sacuvajObjekat(AbstractObjekat o) {
+        try {
+
+            String tipUpita = "INSERT";
+            String upit = String.format("INSERT INTO %s VALUES (%s)", o.vratiImeTabele(), o.vratiParametre());
+
+            System.out.println(upit);
+            Statement s = konekcija.createStatement();
+            s.executeUpdate(upit);
+            ResultSet rs = s.executeQuery("SELECT LAST_INSERT_ID() as last_id from " + o.vratiImeTabele());
+            while (rs.next()) {
+                String lastid = rs.getString("last_id");
+                System.out.println(lastid);
+                o.postaviVrednostPK(lastid);
+                break;
+            }
+
+            s.close();
+            return o;
+        } catch (SQLException ex) {
+            Logger.getLogger(DBBroker.class.getName()).log(Level.SEVERE, null, ex);
+            //throw new ServerskiException(ex.getMessage());
+        }
+        
+        return null;
+    }
 
     public List<AbstractObjekat> vratiSveObjekte(AbstractObjekat o) {
         
@@ -136,17 +163,17 @@ public class DBBroker {
         return listaObjekata;
     }
     
-    public AbstractObjekat sacuvajObjekat(AbstractObjekat o) throws SQLException{
-        String upit = "";
-        System.out.println(o.vratiParametre());
-        upit = "INSERT INTO "+ o.vratiImeTabele() + " VALUES ("+
-                o.vratiParametre() + ")";
-        Statement s = konekcija.createStatement();
-        s.executeUpdate(upit);
-        s.close();
-        System.out.println("Uspesan INSERT");
-        return o;
-    }
+//    public AbstractObjekat sacuvajObjekat(AbstractObjekat o) throws SQLException{
+//        String upit = "";
+//        System.out.println(o.vratiParametre());
+//        upit = "INSERT INTO "+ o.vratiImeTabele() + " VALUES ("+
+//                o.vratiParametre() + ")";
+//        Statement s = konekcija.createStatement();
+//        s.executeUpdate(upit);
+//        s.close();
+//        System.out.println("Uspesan INSERT");
+//        return o;
+//    }
     
     public AbstractObjekat vratiObjekatPoKljucu(AbstractObjekat o, int id) throws SQLException{
         String upit = "";
@@ -183,36 +210,78 @@ public class DBBroker {
         return o;
     }
     
-    public AbstractObjekat sacuvajIliAzurirajObjekat(AbstractObjekat o) throws SQLException {
-        List<AbstractObjekat> lista = vratiSveObjekte(o);
-
-        String upit = "";
-        if (!lista.contains(o)) {
-            upit = "INSERT INTO " + o.vratiImeTabele() + " VALUES (" + o.vratiParametre() + ")";
-            System.out.println("1.UPIT: "+upit);
-        } else {
-            if (o.getStatus() == -1) {
-                upit = "DELETE FROM " + o.vratiImeTabele() + o.vratiSlozeniPK();
-                System.out.println("UPIT: " + upit);
-
-            } else {
+//    public AbstractObjekat sacuvajIliAzurirajObjekat(AbstractObjekat o) throws SQLException {
+//        List<AbstractObjekat> lista = vratiSveObjekte(o);
+//
+//        String upit = "";
+//        if (!lista.contains(o)) {
+//            upit = "INSERT INTO " + o.vratiImeTabele() + " VALUES (" + o.vratiParametre() + ")";
+//            System.out.println("1.UPIT: "+upit);
+//        } else {
+//            if (o.getStatus() == -1) {
+//                upit = "DELETE FROM " + o.vratiImeTabele() + o.vratiSlozeniPK();
+//                System.out.println("UPIT: " + upit);
+//
+//            } else {
+//                if (o.vratiPK() != null) {
+//
+//                    upit = "UPDATE " + o.vratiImeTabele() + " SET " + o.vratiUpdateUpit() + " WHERE " + o.vratiPK() + "=" + o.vratiVrednostiPK();
+//                    System.out.println("2.UPIT: "+upit);
+//                } else {
+//
+//                    upit = "UPDATE " + o.vratiImeTabele() + " SET " + o.vratiUpdateUpit() + o.vratiSlozeniPK();
+//                    System.out.println("3.UPIT: "+upit);
+//                }
+//            }
+//
+//        }
+//
+//        Statement s = (Statement) konekcija.createStatement();
+//        int i = s.executeUpdate(upit);
+//        s.close();
+//        return o;
+//    }
+    
+    
+   public AbstractObjekat sacuvajIliAzurirajObjekat(AbstractObjekat o) {
+        try {
+            List<AbstractObjekat> lista = vratiSveObjekte(o);
+            String upit;
+            String tipUpita;
+            if (lista.contains(o)) {
+                tipUpita = "UPDATE";
                 if (o.vratiPK() != null) {
-
-                    upit = "UPDATE " + o.vratiImeTabele() + " SET " + o.vratiUpdateUpit() + " WHERE " + o.vratiPK() + "=" + o.vratiVrednostiPK();
-                    System.out.println("2.UPIT: "+upit);
+                    upit = String.format("UPDATE %s SET %s WHERE %s = %s",
+                            o.vratiImeTabele(), o.vratiUpdateUpit(),
+                            o.vratiPK(), o.vratiPK());
                 } else {
-
-                    upit = "UPDATE " + o.vratiImeTabele() + " SET " + o.vratiUpdateUpit() + o.vratiSlozeniPK();
-                    System.out.println("3.UPIT: "+upit);
+                    upit = String.format("UPDATE %s SET %s WHERE %s", 
+                            o.vratiImeTabele(), o.vratiUpdateUpit(), o.vratiSlozeniPK());
                 }
+            } else {
+                tipUpita = "INSERT";
+                upit = String.format("INSERT INTO %s VALUES (%s)", o.vratiImeTabele(), o.vratiParametre());
             }
+            System.out.println(upit);
+            Statement s = konekcija.createStatement();
+            s.executeUpdate(upit);
+            if (tipUpita.equals("INSERT")) {
+                ResultSet rs = s.executeQuery("SELECT LAST_INSERT_ID() as last_id from " + o.vratiImeTabele());
+                while (rs.next()) {
+                    String lastid = rs.getString("last_id");
+                    System.out.println(lastid);
+                    o.postaviVrednostPK(lastid);
+                    break;
+                }
 
+            }
+            s.close();
+            return o;
+        } catch (SQLException ex) {
+            Logger.getLogger(DBBroker.class.getName()).log(Level.SEVERE, null, ex);
+            //throw new ServerskiException(ex.getMessage());
         }
-
-        Statement s = (Statement) konekcija.createStatement();
-        int i = s.executeUpdate(upit);
-        s.close();
-        return o;
+        return null;
     }
     
    

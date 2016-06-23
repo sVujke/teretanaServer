@@ -15,7 +15,7 @@ import java.util.List;
  */
 public class SOVratiListuIstorijatPaketa extends AbstractSO {
 
-    List<AbstractObjekat> listaIstorijatPaketa ;
+    private List<AbstractObjekat> listaIstorijatPaketa ;
     
     @Override
     protected void izvrsiKonkretnuOperaciju() {
@@ -32,5 +32,11 @@ public class SOVratiListuIstorijatPaketa extends AbstractSO {
     protected void proveriPreduslove() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+    public List<AbstractObjekat> getListaIstorijatPaketa() {
+        return listaIstorijatPaketa;
+    }
+    
+    
     
 }
