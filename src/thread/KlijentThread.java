@@ -96,6 +96,23 @@ public class KlijentThread extends Thread {
                     out.writeObject(st);
                 } 
                 
+                 if(operacija == Konstante.VRATI_LISTU_IP){  
+//                    ServerTransfer st = new ServerTransfer();
+            
+                    try {
+                        List<AbstractObjekat> listaIp = kontroler.Kontroler.vratiListuIP();
+                        st.setUspesnostOperacije(1);
+                        st.setPodaci(listaIp);
+                    } catch (Exception ex) {
+                        st.setUspesnostOperacije(-1);
+                        st.setException(ex);
+                        Logger.getLogger(KlijentThread.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    
+                    out.writeObject(st);
+                } 
+                
+                
                 if(operacija == Konstante.PRETRAZI_CLANOVE){  
 //                    ServerTransfer st = new ServerTransfer();
             

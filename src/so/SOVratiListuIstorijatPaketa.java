@@ -15,7 +15,7 @@ import java.util.List;
  */
 public class SOVratiListuIstorijatPaketa extends AbstractSO {
 
-    private List<AbstractObjekat> listaIstorijatPaketa ;
+    private List<AbstractObjekat> listaIstorijatPaketa;
     
     @Override
     protected void izvrsiKonkretnuOperaciju() {

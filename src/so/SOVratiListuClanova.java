@@ -23,6 +23,7 @@ public class SOVratiListuClanova extends AbstractSO{
     protected void izvrsiKonkretnuOperaciju() {
         listaClanova = db.vratiSveObjekte(new Clan());
         ucitajMesta();
+        //ucitajPakete();
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
@@ -45,7 +46,7 @@ public class SOVratiListuClanova extends AbstractSO{
             try {
                 Clan cl = (Clan) abs;
                 cl.setMesto((Mesto) db.vratiObjekatPoKljucu(new Mesto(), Integer.parseInt(cl.getMesto().getMestoid())));
-                System.out.println(cl.getMesto());
+                //System.out.println(cl.getMesto());
             }
             //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
             catch (SQLException ex) {
@@ -53,6 +54,8 @@ public class SOVratiListuClanova extends AbstractSO{
             }
         }
     }
+
+    
     
     
     

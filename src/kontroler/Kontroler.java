@@ -16,6 +16,7 @@ import so.SOPrijaviKorisnika;
 import so.SOVratiClanaPoPK;
 import so.SOVratiListuClanova;
 import so.SOVratiListuDolazaka;
+import so.SOVratiListuIstorijatPaketa;
 import so.SOVratiListuKorisnika;
 import so.SOVratiListuMesta;
 import so.SOVratiListuPaketa;
@@ -56,6 +57,13 @@ public class Kontroler {
         
         som.izvrsiOperaciju();
         return som.getListaKorisnika();
+    }
+    
+    public static List<AbstractObjekat> vratiListuIP(){
+        SOVratiListuIstorijatPaketa som = new SOVratiListuIstorijatPaketa();
+        
+        som.izvrsiOperaciju();
+        return som.getListaIstorijatPaketa();
     }
     
     public static List<AbstractObjekat> vratiListuDolazaka(){
