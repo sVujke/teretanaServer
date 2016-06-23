@@ -131,6 +131,24 @@ public class KlijentThread extends Thread {
                     out.writeObject(st);
                 } 
                 
+                if(operacija == Konstante.ZAPAMTI_CLANA){  
+                    //ServerTransfer st = new ServerTransfer();
+            
+                    try {
+                        //System.out.println("VRATI_LISTU_KORISNIKA u CT");
+                        List<Object> parametri =  (List<Object>) kt.getParametar();
+                        AbstractObjekat kor = kontroler.Kontroler.zapamtiClana(parametri);
+                        st.setUspesnostOperacije(1);
+                        st.setPodaci(kor);
+                    } catch (Exception ex) {
+                        st.setUspesnostOperacije(-1);
+                        st.setException(ex);
+                        Logger.getLogger(KlijentThread.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    System.out.println("salje se odgovor");
+                    out.writeObject(st);
+                }
+                
                 if(operacija == Konstante.PRIJAVI_KORISNIKA){
 //                    sServerTransfer st = new ServerTransfer();
                     

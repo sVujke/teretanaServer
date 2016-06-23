@@ -25,12 +25,10 @@ public class SOZapamtiDolazak extends AbstractSO {
     
     @Override
     protected void izvrsiKonkretnuOperaciju() {
-        try {
+        
             db.sacuvajObjekat(dolazak);
             // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-        } catch (SQLException ex) {
-            Logger.getLogger(SOZapamtiDolazak.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        
     }
 
     @Override

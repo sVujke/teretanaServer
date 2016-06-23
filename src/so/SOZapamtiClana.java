@@ -7,6 +7,7 @@ package so;
 
 import domen.AbstractObjekat;
 import java.sql.SQLException;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -16,19 +17,20 @@ import java.util.logging.Logger;
  */
 public class SOZapamtiClana extends AbstractSO {
     
+    private List<Object> parametri;
     private AbstractObjekat clan;
-
-    public SOZapamtiClana(AbstractObjekat clan) {
-        this.clan = clan;
+    private AbstractObjekat paket;
+    
+    public SOZapamtiClana(List<Object> parametri) {
+        this.clan = (AbstractObjekat) parametri.get(0);
+        this.paket = (AbstractObjekat) parametri.get(1);
     }
   
     @Override
     protected void izvrsiKonkretnuOperaciju() {
-        try {
+        
             db.sacuvajIliAzurirajObjekat(clan);
-        } catch (SQLException ex) {
-            Logger.getLogger(SOZapamtiClana.class.getName()).log(Level.SEVERE, null, ex);
-        }
+       
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

@@ -25,12 +25,10 @@ public class SOZapamtiPretplatu extends AbstractSO {
     
     @Override
     protected void izvrsiKonkretnuOperaciju() {
-        try {
+        
             db.sacuvajIliAzurirajObjekat(pretplata);
             //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-        } catch (SQLException ex) {
-            Logger.getLogger(SOZapamtiPretplatu.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        
     }
 
     @Override

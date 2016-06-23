@@ -25,12 +25,10 @@ public class SOZapamtiPaket extends AbstractSO{
     
     @Override
     protected void izvrsiKonkretnuOperaciju() {
-        try {
+        
             db.sacuvajIliAzurirajObjekat(paket);
             //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-        } catch (SQLException ex) {
-            Logger.getLogger(SOZapamtiPaket.class.getName()).log(Level.SEVERE, null, ex);
-        }
+       
     }
 
     @Override

@@ -25,12 +25,10 @@ public class SOZapamtiKorisnika extends AbstractSO{
     
     @Override
     protected void izvrsiKonkretnuOperaciju() {
-        try {
+        
             db.sacuvajObjekat(korisnik);
             //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-        } catch (SQLException ex) {
-            Logger.getLogger(SOZapamtiKorisnika.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        
     }
 
     @Override

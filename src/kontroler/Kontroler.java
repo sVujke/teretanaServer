@@ -88,8 +88,8 @@ public class Kontroler {
         return som.getKorisnik();
     } 
     
-    public static AbstractObjekat zapamtiClana(AbstractObjekat clan) throws Exception {
-        SOZapamtiClana som = new SOZapamtiClana(clan);
+    public static AbstractObjekat zapamtiClana(List<Object> parametri) throws Exception {
+        SOZapamtiClana som = new SOZapamtiClana(parametri);
         
         som.izvrsiOperaciju();
         System.out.println("izvrsena operacija");
