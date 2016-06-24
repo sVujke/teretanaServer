@@ -65,8 +65,13 @@ public class Test {
 //        for (AbstractObjekat abstractObjekat : paketi) {
 //            System.out.println(abstractObjekat);
 //        }
-        
+            
+List<AbstractObjekat> isp = Kontroler.vratiKontrolera().vratiListuIP();
+        for (AbstractObjekat abstractObjekat : isp) {
+            System.out.println(abstractObjekat);
+        }
        /*
+
        AbstractObjekat a = new Paket("3", "srednji", "3010");
        AbstractObjekat r = Kontroler.vratiKontrolera().zapamtiPaket(a);
         System.out.println(r);

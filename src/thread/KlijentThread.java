@@ -145,7 +145,7 @@ public class KlijentThread extends Thread {
                         st.setException(ex);
                         Logger.getLogger(KlijentThread.class.getName()).log(Level.SEVERE, null, ex);
                     }
-                    System.out.println("salje se odgovor");
+                    System.out.println("salje se odgovor ZAPAMTI_CLANA");
                     out.writeObject(st);
                 }
                 
@@ -255,10 +255,26 @@ public class KlijentThread extends Thread {
                         st.setException(ex);
                         Logger.getLogger(KlijentThread.class.getName()).log(Level.SEVERE, null, ex);
                     }
-                    System.out.println("salje se odgovor");
+                    System.out.println("salje se odgovor ZAPAMTI_IP KlijentThread");
                     out.writeObject(st);
                 }
                 
+                if(operacija == Konstante.VRATI_LISTU_DOLAZAKA){  
+                    //ServerTransfer st = new ServerTransfer();
+            
+                    try {
+                        //System.out.println("VRATI_LISTU_KORISNIKA u CT");
+                        List<AbstractObjekat> dolasci = kontroler.Kontroler.vratiListuDolazaka();
+                        st.setUspesnostOperacije(1);
+                        st.setPodaci(dolasci);
+                    } catch (Exception ex) {
+                        st.setUspesnostOperacije(-1);
+                        st.setException(ex);
+                        Logger.getLogger(KlijentThread.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    System.out.println("salje se odgovor");
+                    out.writeObject(st);
+                }
             }
             
          

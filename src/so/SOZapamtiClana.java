@@ -39,15 +39,21 @@ public class SOZapamtiClana extends AbstractSO {
             db.sacuvajIliAzurirajObjekat(clan);
             Clan c = (Clan) clan;
             Paket p = (Paket) paket;
-            SOVratiListuIstorijatPaketa som = new SOVratiListuIstorijatPaketa();
-            listaIP = som.getListaIstorijatPaketa();
-            
+            //SOVratiListuIstorijatPaketa som = new SOVratiListuIstorijatPaketa();
+            listaIP = db.vratiSveObjekte(new IstorijatPaketa());
+            //System.out.println(listaIP.get(0));
+            //System.out.println("izgleda da je ovde problem");
             IstorijatPaketa izEvidencije = clanVecImaAktivanPaket(listaIP, c, p);
+            //System.out.println("nope");
             if(izEvidencije != null){
                 IstorijatPaketa istorijatP = promeniStatusAktuelnogPaketa(izEvidencije);
+                System.out.println("ubaci NovuEvidenciju");
                 ubaciNovuEvidenciju(istorijatP,c,p);
+                System.out.println("POSLE ubaci  NovuEvidenciju");
             }else{
+                System.out.println("ubaci prvu evidenciju");
                 ubaciPrvuEvidenciju(c,p);
+                System.out.println("POSLE ubaci prvu evidenciju");
             }
            
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
@@ -68,8 +74,11 @@ public class SOZapamtiClana extends AbstractSO {
     }
 
     private IstorijatPaketa clanVecImaAktivanPaket(List<AbstractObjekat> listaIP, Clan c, Paket p) {
+        System.out.println("usao u metodu clanVecImaAktivanPaket " );
          for (AbstractObjekat abs : listaIP) {
+             System.out.println("usao u for");
                 IstorijatPaketa ip = (IstorijatPaketa) abs;
+                System.out.println("pre if: "+ip.getStatus());
                 if(ip.getClan().getClanId().equals(c.getClanId())
                         && ip.getPaket().getPaketId().equals(p.getPaketId())
                         && ip.getStatus() == 1){
@@ -77,6 +86,8 @@ public class SOZapamtiClana extends AbstractSO {
                     return ip;
                 }
         }
+        String x = "OVO CE BITI PRVI PUT DA CLAN UZIMA PAKET";
+                System.out.println(x);
         return null;
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
@@ -88,10 +99,7 @@ public class SOZapamtiClana extends AbstractSO {
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    private void ubaciAktuelnuEvidenciju(IstorijatPaketa torijatP, Clan c, Paket p) {
-        
-        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+
 
     private void ubaciNovuEvidenciju(IstorijatPaketa torijatP, Clan c, Paket p) {
         
