@@ -275,6 +275,24 @@ public class KlijentThread extends Thread {
                     System.out.println("salje se odgovor");
                     out.writeObject(st);
                 }
+                
+                if(operacija == Konstante.ZAPAMTI_DOLAZAK){  
+                    //ServerTransfer st = new ServerTransfer();
+            
+                    try {
+                        //System.out.println("VRATI_LISTU_KORISNIKA u CT");
+                        AbstractObjekat dolazak =  (AbstractObjekat) kt.getParametar();
+                        AbstractObjekat dol = kontroler.Kontroler.zapamtiDolazak(dolazak);
+                        st.setUspesnostOperacije(1);
+                        st.setPodaci(dol);
+                    } catch (Exception ex) {
+                        st.setUspesnostOperacije(-1);
+                        st.setException(ex);
+                        Logger.getLogger(KlijentThread.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    System.out.println("salje se odgovor ZAPAMTI_CLANA");
+                    out.writeObject(st);
+                }
             }
             
          
