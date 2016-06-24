@@ -290,7 +290,7 @@ public class KlijentThread extends Thread {
                         st.setException(ex);
                         Logger.getLogger(KlijentThread.class.getName()).log(Level.SEVERE, null, ex);
                     }
-                    System.out.println("salje se odgovor ZAPAMTI_CLANA");
+                    System.out.println("salje se odgovor ZAPAMTI_DOLAZAK");
                     out.writeObject(st);
                 }
             }
