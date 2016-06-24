@@ -241,6 +241,24 @@ public class KlijentThread extends Thread {
                     out.writeObject(st);
                 }
                 
+                if(operacija == Konstante.ZAPAMTI_IP){  
+                    //ServerTransfer st = new ServerTransfer();
+            
+                    try {
+                        //System.out.println("VRATI_LISTU_KORISNIKA u CT");
+                        AbstractObjekat ip = (AbstractObjekat) kt.getParametar();
+                        AbstractObjekat isp = kontroler.Kontroler.zapamtiIP(ip);
+                        st.setUspesnostOperacije(1);
+                        st.setPodaci(isp);
+                    } catch (Exception ex) {
+                        st.setUspesnostOperacije(-1);
+                        st.setException(ex);
+                        Logger.getLogger(KlijentThread.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    System.out.println("salje se odgovor");
+                    out.writeObject(st);
+                }
+                
             }
             
          

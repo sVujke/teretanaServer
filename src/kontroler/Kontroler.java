@@ -22,6 +22,7 @@ import so.SOVratiListuMesta;
 import so.SOVratiListuPaketa;
 import so.SOZapamtiClana;
 import so.SOZapamtiDolazak;
+import so.SOZapamtiIstorijatPaketa;
 import so.SOZapamtiKorisnika;
 import so.SOZapamtiPaket;
 import so.SOZapamtiPretplatu;
@@ -186,6 +187,14 @@ public class Kontroler {
         System.out.println("izvrsena operacija");
         return som.getClan();
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+     
+     public static AbstractObjekat zapamtiIP(AbstractObjekat ip){
+         SOZapamtiIstorijatPaketa som = new SOZapamtiIstorijatPaketa(ip);
+        
+        som.izvrsiOperaciju();
+        System.out.println("izvrsena operacija");
+        return som.getIstorijatPaketa();
     }
     
 }

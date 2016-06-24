@@ -16,6 +16,7 @@ import java.util.List;
 import domen.AbstractObjekat;
 import domen.Clan;
 import domen.Dolazak;
+import domen.IstorijatPaketa;
 import domen.Korisnik;
 import domen.Mesto;
 import domen.Paket;
@@ -60,10 +61,10 @@ public class Test {
         System.out.println(dolazakBack);
         */
        
-       List<AbstractObjekat> paketi = Kontroler.vratiKontrolera().vratiListuPaketa();
-        for (AbstractObjekat abstractObjekat : paketi) {
-            System.out.println(abstractObjekat);
-        }
+//       List<AbstractObjekat> paketi = Kontroler.vratiKontrolera().vratiListuPaketa();
+//        for (AbstractObjekat abstractObjekat : paketi) {
+//            System.out.println(abstractObjekat);
+//        }
         
        /*
        AbstractObjekat a = new Paket("3", "srednji", "3010");
@@ -76,7 +77,16 @@ public class Test {
        AbstractObjekat r = Kontroler.vratiKontrolera().zapamtiPaket(a);
         System.out.println(r);
        */
-       
+       /*
+       String string = "01.11.2011.";
+       DateFormat format = new SimpleDateFormat("dd.MM.yyyy.");
+       Date date = format.parse(string);
+        AbstractObjekat abs = new IstorijatPaketa(true, date, 
+                new Clan("1", null, null, null, null, null, null), 
+                new Paket("1", null, null), "0");
+       AbstractObjekat r = Kontroler.vratiKontrolera().zapamtiIP(abs);
+        System.out.println(r);
+       */
        /*
        String string = "01.11.2011.";
        DateFormat format = new SimpleDateFormat("dd.MM.yyyy.");
@@ -99,5 +109,10 @@ public class Test {
         } */
       
       //System.out.println(new File(".").getAbsolutePath());
+//      
+//      DateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy.");
+//        Date date = new Date();
+//        System.out.println(dateFormat.format(date));
+//        System.out.println(date);
     }
 }
