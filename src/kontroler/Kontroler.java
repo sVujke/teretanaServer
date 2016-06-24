@@ -20,6 +20,7 @@ import so.SOVratiListuIstorijatPaketa;
 import so.SOVratiListuKorisnika;
 import so.SOVratiListuMesta;
 import so.SOVratiListuPaketa;
+import so.SOVratiListuPretplata;
 import so.SOZapamtiClana;
 import so.SOZapamtiDolazak;
 import so.SOZapamtiIstorijatPaketa;
@@ -34,6 +35,14 @@ import so.SOZapamtiPretplatu;
 public class Kontroler {
     
     private static Kontroler instance;
+
+    public static List<AbstractObjekat> vratiListuPretplata() {
+        SOVratiListuPretplata som = new SOVratiListuPretplata();
+
+        som.izvrsiOperaciju();
+        return som.getPretplate();
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 
    
     private List<AbstractObjekat> listaKorisnika;
