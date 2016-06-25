@@ -6,6 +6,7 @@
 package kontroler;
 
 import domen.AbstractObjekat;
+import domen.IstorijatPaketa;
 import domen.Korisnik;
 import java.util.List;
 import so.SOObrisiClana;
@@ -100,10 +101,13 @@ public class Kontroler {
     
     public static AbstractObjekat zapamtiClana(List<Object> parametri) throws Exception {
         SOZapamtiClana som = new SOZapamtiClana(parametri);
-        
+        SOZapamtiIstorijatPaketa som2 = new SOZapamtiIstorijatPaketa((AbstractObjekat) parametri.get(1));
         som.izvrsiOperaciju();
-        System.out.println("izvrsena operacija");
+        som2.izvrsiOperaciju();
+        System.out.println("izvrsena operacija ZAPAMTI_CLANA");
         return som.getClan();
+        
+        
     }
     
     public static  AbstractObjekat obrisiClana(AbstractObjekat clan){
@@ -170,8 +174,8 @@ public class Kontroler {
         return som.getPretplata();
     }
     
-    public static List<AbstractObjekat> pretraziPretplate(AbstractObjekat pretplata){
-        SOPretraziPretplate som = new SOPretraziPretplate(pretplata);
+    public static List<AbstractObjekat> pretraziPretplate(List<AbstractObjekat> parametri){
+        SOPretraziPretplate som = new SOPretraziPretplate(parametri);
         
         som.izvrsiOperaciju();
         System.out.println("izvrsena operacija");

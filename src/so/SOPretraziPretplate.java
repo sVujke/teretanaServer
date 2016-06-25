@@ -6,9 +6,14 @@
 package so;
 
 import domen.AbstractObjekat;
+import domen.Clan;
+import domen.Paket;
 import domen.Pretplata;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -16,38 +21,31 @@ import java.util.List;
  */
 public class SOPretraziPretplate extends AbstractSO{
 
-    private AbstractObjekat pretplata;
+    private List<AbstractObjekat> parametri;
+    private Clan clan;
+    private Paket paket;
     private List<AbstractObjekat> pretplate = new ArrayList<>();
 
-    public SOPretraziPretplate(AbstractObjekat pretplata) {
-        this.pretplata = pretplata;
+    public SOPretraziPretplate(List<AbstractObjekat> parametri) {
+        this.parametri = parametri;
+        this.clan = (Clan) parametri.get(1);
+        this.paket = (Paket) parametri.get(0);
     }
-    
-    
-    
+
     @Override
-    protected void izvrsiKonkretnuOperaciju(){
-        List<AbstractObjekat> svePretplate = db.vratiSveObjekte(pretplata);
-        
-        for (AbstractObjekat pretplataIzBaze : svePretplate) {
-            Pretplata prb = (Pretplata) pretplataIzBaze;
-            Pretplata p = (Pretplata) pretplata;
-            
-            if(p.getClan().getClanId() != null){
-                if(prb.getClan().getClanId().equalsIgnoreCase(p.getClan().getClanId())){
-                    AbstractObjekat pr = prb;
-                    pretplate.add(pr);
-                }
-            }
-            
-            if(p.getPaket().getPaketId() != null){
-                if(prb.getPaket().getPaketId().equalsIgnoreCase(p.getPaket().getPaketId())){
-                    AbstractObjekat pr = prb;
-                    pretplate.add(pr);
-                }
+    protected void izvrsiKonkretnuOperaciju() {
+        List<AbstractObjekat> izBaze = db.vratiSveObjekte(new Pretplata());
+        ucitajClanovePakete(izBaze);
+        System.out.println("IZVUCENO PRETPLATA "+izBaze.size());
+        System.out.println("pre fora");
+        for (AbstractObjekat abs : izBaze) {
+            System.out.println("usao u for");
+            Pretplata p = (Pretplata) abs;
+            if(p.getClan().equals(clan) && p.getPaket().equals(paket)){
+                System.out.println("USLOV ISPUNJEN");
+                pretplate.add(abs);
             }
         }
-        
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
@@ -61,13 +59,28 @@ public class SOPretraziPretplate extends AbstractSO{
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    public AbstractObjekat getPretplata() {
-        return pretplata;
-    }
-
     public List<AbstractObjekat> getPretplate() {
         return pretplate;
     }
+
+    private void ucitajClanovePakete(List<AbstractObjekat> izBaze) {
+        for (AbstractObjekat abs : izBaze) {
+            try {
+                Pretplata ip = (Pretplata) abs;
+                ip.setClan((Clan) db.vratiObjekatPoKljucu(new Clan(), Integer.parseInt(ip.getClan().getClanId())));
+                ip.setPaket((Paket) db.vratiObjekatPoKljucu(new Paket(), Integer.parseInt(ip.getPaket().getPaketId())));
+            } catch (SQLException ex) {
+                Logger.getLogger(SOVratiListuIstorijatPaketa.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    
+    
+    
+    
+    
+   
     
     
     

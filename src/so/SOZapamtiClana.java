@@ -36,25 +36,30 @@ public class SOZapamtiClana extends AbstractSO {
     @Override
     protected void izvrsiKonkretnuOperaciju() {
         
-            db.sacuvajIliAzurirajObjekat(clan);
-            Clan c = (Clan) clan;
-            Paket p = (Paket) paket;
-            //SOVratiListuIstorijatPaketa som = new SOVratiListuIstorijatPaketa();
-            listaIP = db.vratiSveObjekte(new IstorijatPaketa());
-            //System.out.println(listaIP.get(0));
-            //System.out.println("izgleda da je ovde problem");
-            IstorijatPaketa izEvidencije = clanVecImaAktivanPaket(listaIP, c, p);
-            //System.out.println("nope");
-            if(izEvidencije != null){
-                IstorijatPaketa istorijatP = promeniStatusAktuelnogPaketa(izEvidencije);
-                System.out.println("ubaci NovuEvidenciju");
-                ubaciNovuEvidenciju(istorijatP,c,p);
-                System.out.println("POSLE ubaci  NovuEvidenciju");
-            }else{
-                System.out.println("ubaci prvu evidenciju");
-                ubaciPrvuEvidenciju(c,p);
-                System.out.println("POSLE ubaci prvu evidenciju");
-            }
+            db.sacuvajObjekat(clan);
+            
+            //db.potvrdiTransakciju();
+            System.out.println("SACUVAN JE CLAN");
+            //Clan c = (Clan) clan;
+            //Paket p = (Paket) paket;
+            
+            //ubaciPrvuEvidenciju(c, p);
+            //System.out.println("SACUVAN JE ISTORIJA PAKETA");
+            
+//            listaIP = db.vratiSveObjekte(new IstorijatPaketa());
+//            
+//            IstorijatPaketa izEvidencije = clanVecImaAktivanPaket(listaIP, c, p);
+//            
+//            if(izEvidencije != null){
+//                IstorijatPaketa istorijatP = promeniStatusAktuelnogPaketa(izEvidencije);
+//                System.out.println("ubaci NovuEvidenciju");
+                   // ubaciNovuEvidenciju(istorijatP,c,p);
+//                System.out.println("POSLE ubaci  NovuEvidenciju");
+//            }else{
+//                System.out.println("ubaci prvu evidenciju");
+//                ubaciPrvuEvidenciju(c,p);
+//                System.out.println("POSLE ubaci prvu evidenciju");
+//            }
            
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
@@ -104,29 +109,33 @@ public class SOZapamtiClana extends AbstractSO {
     private void ubaciNovuEvidenciju(IstorijatPaketa torijatP, Clan c, Paket p) {
         
         SOZapamtiIstorijatPaketa som = new SOZapamtiIstorijatPaketa(torijatP);
-        som.izvrsiKonkretnuOperaciju();
+        som.izvrsiOperaciju();
         
         IstorijatPaketa isp = new IstorijatPaketa(true, danasnjiDatum(), c, p, "0");
         SOZapamtiIstorijatPaketa so = new SOZapamtiIstorijatPaketa(isp);
-        so.izvrsiKonkretnuOperaciju();
+        so.izvrsiOperaciju();
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     private void ubaciPrvuEvidenciju(Clan c, Paket p) {
         IstorijatPaketa isp = new IstorijatPaketa(true, danasnjiDatum(), c, p, "0");
         SOZapamtiIstorijatPaketa so = new SOZapamtiIstorijatPaketa(isp);
-        so.izvrsiKonkretnuOperaciju();
+        so.izvrsiOperaciju();
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
     private Date danasnjiDatum(){
-        DateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy.");
+       // DateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy.");
         Date date = new Date();
         //System.out.println(dateFormat.format(date)); //2014/08/06 15:59:48
         return date;
 //        String string = "01.11.2011.";
 //       DateFormat format = new SimpleDateFormat("dd.MM.yyyy.");
 //       Date date = format.parse(string);
+    }
+
+    private void ubaciEvidencijuPaketa() {
+       // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     
