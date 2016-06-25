@@ -165,16 +165,34 @@ public class KlijentThread extends Thread {
                     out.writeObject(st);
                 }
                 
-                if(operacija == Konstante.PRIJAVI_KORISNIKA){
+                if(operacija == Konstante.ZAPAMTI_CLANA){  
+                    //ServerTransfer st = new ServerTransfer();
+            
+                    try {
+                        //System.out.println("VRATI_LISTU_KORISNIKA u CT");
+                        List<Object> parametri =  (List<Object>) kt.getParametar();
+                        AbstractObjekat kor = kontroler.Kontroler.zapamtiClana(parametri);
+                        st.setUspesnostOperacije(1);
+                        st.setPodaci(kor);
+                    } catch (Exception ex) {
+                        st.setUspesnostOperacije(-1);
+                        st.setException(ex);
+                        Logger.getLogger(KlijentThread.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    System.out.println("salje se odgovor ZAPAMTI_CLANA");
+                    out.writeObject(st);
+                }
+                
+                if(operacija == Konstante.ZAPAMTI_PRETPLATU){
 //                    sServerTransfer st = new ServerTransfer();
                     
                     try{
-                        Korisnik korisnik = (Korisnik) kt.getParametar();
+                        AbstractObjekat pretplata = (AbstractObjekat) kt.getParametar();
                         //ServerTransfer st = new ServerTransfer();
                     
-                        Korisnik kor = (Korisnik) kontroler.Kontroler.prijaviKorisnika(korisnik);
+                        AbstractObjekat pre =  kontroler.Kontroler.zapamtiPretplatu(pretplata);
                         st.setUspesnostOperacije(1);
-                        st.setPodaci(kor);
+                        st.setPodaci(pre);
                     } catch (Exception ex){
                         st.setUspesnostOperacije(-1);
                         st.setException(ex);
