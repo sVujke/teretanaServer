@@ -242,8 +242,10 @@ public class DBBroker {
 //        return o;
 //    }
     
-    
-   public AbstractObjekat sacuvajIliAzurirajObjekat(AbstractObjekat o) {
+  
+   
+   
+   public AbstractObjekat sacuvajIliAzurirajObjekat(AbstractObjekat o)  {
         try {
             List<AbstractObjekat> lista = vratiSveObjekte(o);
             String upit;
@@ -251,12 +253,9 @@ public class DBBroker {
             if (lista.contains(o)) {
                 tipUpita = "UPDATE";
                 if (o.vratiPK() != null) {
-                    upit = String.format("UPDATE %s SET %s WHERE %s = %s",
-                            o.vratiImeTabele(), o.vratiUpdateUpit(),
-                            o.vratiPK(), o.vratiPK());
+                    upit = String.format("UPDATE %s SET %s WHERE %s = %s", o.vratiImeTabele(), o.vratiUpdateUpit(), o.vratiPK(), o.vratiVrednostiPK());
                 } else {
-                    upit = String.format("UPDATE %s SET %s WHERE %s", 
-                            o.vratiImeTabele(), o.vratiUpdateUpit(), o.vratiSlozeniPK());
+                    upit = String.format("UPDATE %s SET %s WHERE %s", o.vratiImeTabele(), o.vratiUpdateUpit(), o.vratiSlozeniPK());
                 }
             } else {
                 tipUpita = "INSERT";

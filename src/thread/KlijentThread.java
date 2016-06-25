@@ -250,6 +250,24 @@ public class KlijentThread extends Thread {
                     System.out.println("salje se odgovor");
                     out.writeObject(st);
                 }
+                
+                if (operacija == Konstante.OBRISI_CLANA) {
+                    //ServerTransfer st = new ServerTransfer();
+
+                    try {
+                        //System.out.println("VRATI_LISTU_KORISNIKA u CT");
+                        AbstractObjekat clana = (AbstractObjekat) kt.getParametar();
+                        AbstractObjekat cln = kontroler.Kontroler.obrisiClana(clana);
+                        st.setUspesnostOperacije(1);
+                        st.setPodaci(cln);
+                    } catch (Exception ex) {
+                        st.setUspesnostOperacije(-1);
+                        st.setException(ex);
+                        Logger.getLogger(KlijentThread.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    System.out.println("salje se odgovor");
+                    out.writeObject(st);
+                }
 
                 if (operacija == Konstante.VRATI_CLANA_PK) {
                     //ServerTransfer st = new ServerTransfer();

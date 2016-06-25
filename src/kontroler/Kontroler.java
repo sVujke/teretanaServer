@@ -6,10 +6,13 @@
 package kontroler;
 
 import domen.AbstractObjekat;
+import domen.Clan;
 import domen.IstorijatPaketa;
 import domen.Korisnik;
 import java.util.List;
+import so.SOIzmeniIstorijatPaketa;
 import so.SOObrisiClana;
+import so.SOObrisiIstorijatPaketa;
 import so.SOObrisiKorisnika;
 import so.SOPretraziClanove;
 import so.SOPretraziPretplate;
@@ -111,6 +114,15 @@ public class Kontroler {
     }
     
     public static  AbstractObjekat obrisiClana(AbstractObjekat clan){
+        Clan c = (Clan) clan;
+        List<AbstractObjekat> lip = Kontroler.vratiKontrolera().vratiListuIP();
+        for (AbstractObjekat abs : lip) {
+            IstorijatPaketa ip = (IstorijatPaketa) abs;
+            if(ip.getClan().equals(c)){
+                obrisiIP(abs);
+            }
+        }
+        
         SOObrisiClana som = new SOObrisiClana(clan);
         
         som.izvrsiOperaciju();
@@ -208,6 +220,23 @@ public class Kontroler {
         som.izvrsiOperaciju();
         System.out.println("izvrsena operacija");
         return som.getIstorijatPaketa();
+    }
+     
+     public static AbstractObjekat izmeniIP(AbstractObjekat ip){
+        SOIzmeniIstorijatPaketa som = new SOIzmeniIstorijatPaketa(ip);
+        
+        som.izvrsiOperaciju();
+        System.out.println("izvrsena operacija");
+        return som.getIstorijatPaketa();
+    }
+
+    public static AbstractObjekat obrisiIP(AbstractObjekat ip) {
+        SOObrisiIstorijatPaketa som = new SOObrisiIstorijatPaketa(ip);
+        
+        som.izvrsiOperaciju();
+        System.out.println("izvrsena operacija");
+        return som.getIstorijatPaketaBrisem();
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 }
