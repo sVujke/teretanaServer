@@ -15,6 +15,7 @@ import so.SOObrisiClana;
 import so.SOObrisiIstorijatPaketa;
 import so.SOObrisiKorisnika;
 import so.SOPretraziClanove;
+import so.SOPretraziPakete;
 import so.SOPretraziPretplate;
 import so.SOPrijaviKorisnika;
 import so.SOVratiClanaPoPK;
@@ -45,6 +46,15 @@ public class Kontroler {
 
         som.izvrsiOperaciju();
         return som.getPretplate();
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public static List<AbstractObjekat> pretraziPakete(String parametri) {
+        System.out.println("U KONTROLERU: "+parametri);
+        SOPretraziPakete som = new SOPretraziPakete(parametri);
+
+        som.izvrsiOperaciju();
+        return som.getPaketi();
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
