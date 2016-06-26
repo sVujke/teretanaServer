@@ -61,6 +61,7 @@ public class KlijentThread extends Thread {
                     }
 
                     out.writeObject(st);
+                    continue;
                 }
 
                 if (operacija == Konstante.VRATI_LISTU_PAKETA) {
@@ -77,6 +78,7 @@ public class KlijentThread extends Thread {
                     }
 
                     out.writeObject(st);
+                    continue;
                 }
 
                 if (operacija == Konstante.VRATI_LISTU_CLANOVA) {
@@ -93,6 +95,7 @@ public class KlijentThread extends Thread {
                     }
 
                     out.writeObject(st);
+                    continue;
                 }
 
                 if (operacija == Konstante.VRATI_LISTU_IP) {
@@ -109,6 +112,7 @@ public class KlijentThread extends Thread {
                     }
 
                     out.writeObject(st);
+                    continue;
                 }
 
                 if (operacija == Konstante.VRATI_LISTU_PRETPLATA) {
@@ -125,6 +129,7 @@ public class KlijentThread extends Thread {
                     }
 
                     out.writeObject(st);
+                    continue;
                 }
 
                 if (operacija == Konstante.PRETRAZI_CLANOVE) {
@@ -143,6 +148,7 @@ public class KlijentThread extends Thread {
                     }
 
                     out.writeObject(st);
+                    continue;
                 }
 
                 if (operacija == Konstante.ZAPAMTI_CLANA) {
@@ -161,6 +167,7 @@ public class KlijentThread extends Thread {
                     }
                     System.out.println("salje se odgovor ZAPAMTI_CLANA");
                     out.writeObject(st);
+                    continue;
                 }
 
 //                if(operacija == Konstante.ZAPAMTI_CLANA){  
@@ -196,23 +203,43 @@ public class KlijentThread extends Thread {
                     }
                     System.out.println("salje se odgovor");
                     out.writeObject(st);
+                    continue;
                 }
-
-                if (operacija == Konstante.VRATI_LISTU_KORISNIKA) {
-                    //ServerTransfer st = new ServerTransfer();
+                
+                if (operacija == Konstante.VRATI_LISTU_CLANOVA) {
+//                    ServerTransfer st = new ServerTransfer();
 
                     try {
-                        //System.out.println("VRATI_LISTU_KORISNIKA u CT");
-                        List<AbstractObjekat> korisnici = kontroler.Kontroler.vratiListuKorisnika();
+                        List<AbstractObjekat> clanovi = kontroler.Kontroler.vratiListuClanova();
                         st.setUspesnostOperacije(1);
-                        st.setPodaci(korisnici);
+                        st.setPodaci(clanovi);
                     } catch (Exception ex) {
                         st.setUspesnostOperacije(-1);
                         st.setException(ex);
                         Logger.getLogger(KlijentThread.class.getName()).log(Level.SEVERE, null, ex);
                     }
-                    System.out.println("salje se odgovor");
+
                     out.writeObject(st);
+                    continue;
+                }
+
+                if (operacija == Konstante.PRIJAVI_KORISNIKA) {
+                    //ServerTransfer st = new ServerTransfer();
+
+                    try {
+                        //System.out.println("VRATI_LISTU_KORISNIKA u CT");
+                        Korisnik k = (Korisnik) kt.getParametar();
+                        AbstractObjekat kor = kontroler.Kontroler.prijaviKorisnika(k);
+                        st.setUspesnostOperacije(1);
+                        st.setPodaci(kor);
+                    } catch (Exception ex) {
+                        st.setUspesnostOperacije(-1);
+                        st.setException(ex);
+                        Logger.getLogger(KlijentThread.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    System.out.println("salje se odgovor PRIJAVI KOR");
+                    out.writeObject(st);
+                    continue;
                 }
 
                 if (operacija == Konstante.ZAPAMTI_KORISNIKA) {
@@ -231,6 +258,7 @@ public class KlijentThread extends Thread {
                     }
                     System.out.println("salje se odgovor");
                     out.writeObject(st);
+                    continue;
                 }
 
                 if (operacija == Konstante.OBRISI_KORISNIKA) {
@@ -249,6 +277,7 @@ public class KlijentThread extends Thread {
                     }
                     System.out.println("salje se odgovor");
                     out.writeObject(st);
+                    continue;
                 }
 
                 if (operacija == Konstante.OBRISI_CLANA) {
@@ -267,6 +296,7 @@ public class KlijentThread extends Thread {
                     }
                     System.out.println("salje se odgovor");
                     out.writeObject(st);
+                    continue;
                 }
 
                 if (operacija == Konstante.VRATI_CLANA_PK) {
@@ -285,6 +315,7 @@ public class KlijentThread extends Thread {
                     }
                     System.out.println("salje se odgovor");
                     out.writeObject(st);
+                    continue;
                 }
 
                 if (operacija == Konstante.ZAPAMTI_IP) {
@@ -303,6 +334,7 @@ public class KlijentThread extends Thread {
                     }
                     System.out.println("salje se odgovor ZAPAMTI_IP KlijentThread");
                     out.writeObject(st);
+                    continue;
                 }
 
                 if (operacija == Konstante.VRATI_LISTU_DOLAZAKA) {
@@ -320,6 +352,7 @@ public class KlijentThread extends Thread {
                     }
                     System.out.println("salje se odgovor");
                     out.writeObject(st);
+                    continue;
                 }
 
                 if (operacija == Konstante.ZAPAMTI_DOLAZAK) {
@@ -338,6 +371,7 @@ public class KlijentThread extends Thread {
                     }
                     System.out.println("salje se odgovor ZAPAMTI_DOLAZAK");
                     out.writeObject(st);
+                    continue;
                 }
 
 //                
@@ -357,6 +391,7 @@ public class KlijentThread extends Thread {
                     }
                     System.out.println("salje se odgovor PRETRAZI_PRETPLATE");
                     out.writeObject(st);
+                    continue;
                 }
 
                 if (operacija == Konstante.PRETRAZI_PAKETE) {
@@ -376,6 +411,7 @@ public class KlijentThread extends Thread {
                     }
                     System.out.println("salje se odgovor PRETRAZI_PAKETE");
                     out.writeObject(st);
+                    continue;
                 }
                 
                 if (operacija == Konstante.ZAPAMTI_PAKET) {
@@ -395,6 +431,7 @@ public class KlijentThread extends Thread {
                     }
                     System.out.println("salje se odgovor ZAPAMTI_DOLAZAK");
                     out.writeObject(st);
+                    continue;
                 }
                 
             }
