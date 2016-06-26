@@ -21,6 +21,7 @@ import domen.Korisnik;
 import domen.Mesto;
 import domen.Paket;
 import domen.Pretplata;
+import domen.Termin;
 import java.io.File;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -125,13 +126,15 @@ public class Test {
 //        System.out.println(dateFormat.format(date));
 //        System.out.println(date);
 
-/* 
+        /* 
         Date date = new Date();
         IstorijatPaketa ip = new IstorijatPaketa(true, date,
                 new Clan("1", "Pera", "Peric", "p@p.rs", "adresa", 
                         "0644282784",new Mesto(null, null, "1")), new Paket("1", "jeftin", "2000z"), "0");
         Kontroler.vratiKontrolera().izmeniIP(ip);
-*/      List<AbstractObjekat> lip = Kontroler.vratiKontrolera().vratiListuIP();
+         */
+ /*
+List<AbstractObjekat> lip = Kontroler.vratiKontrolera().vratiListuIP();
         
         for (AbstractObjekat abs : lip) {
             IstorijatPaketa ip = (IstorijatPaketa) abs;
@@ -147,5 +150,11 @@ public class Test {
         Kontroler.vratiKontrolera().obrisiClana(c);
         System.out.println("BRISANJE CLANA");
         //System.out.println("");
+    } 
+         */
+        Termin t = new Termin(null, true, new Paket("3", null, null), "8");
+
+        Kontroler.vratiKontrolera().obrisiTermin(t);
+        System.out.println("Obrisan");
     }
 }

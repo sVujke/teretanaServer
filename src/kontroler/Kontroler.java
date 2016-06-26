@@ -14,6 +14,7 @@ import so.SOIzmeniIstorijatPaketa;
 import so.SOObrisiClana;
 import so.SOObrisiIstorijatPaketa;
 import so.SOObrisiKorisnika;
+import so.SOObrisiTermin;
 import so.SOPretraziClanove;
 import so.SOPretraziPakete;
 import so.SOPretraziPretplate;
@@ -186,6 +187,14 @@ public class Kontroler {
         som.izvrsiOperaciju();
         System.out.println("izvrsena operacija");
         return som.getKorisnik();
+    }
+    
+    public static  AbstractObjekat obrisiTermin(AbstractObjekat termin){
+        SOObrisiTermin som = new SOObrisiTermin(termin);
+        
+        som.izvrsiOperaciju();
+        System.out.println("izvrsena operacija");
+        return som.getTermin();
     }
     
     public static AbstractObjekat zapamtiPretplatu(AbstractObjekat pretplata){
