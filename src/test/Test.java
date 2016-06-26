@@ -152,9 +152,45 @@ List<AbstractObjekat> lip = Kontroler.vratiKontrolera().vratiListuIP();
         //System.out.println("");
     } 
          */
+ /*
         Termin t = new Termin(null, true, new Paket("3", null, null), "8");
 
         Kontroler.vratiKontrolera().obrisiTermin(t);
         System.out.println("Obrisan");
+
+    }
+         */
+ 
+         /*
+        Termin t = new Termin(null, true, new Paket("3", null, null), "0");
+
+        Kontroler.vratiKontrolera().zapamtiTermin(t);
+        System.out.println("Dodat");
+
+        */
+         
+         /*
+         Paket p = new Paket("0", "nuevo", "100");
+         Kontroler.vratiKontrolera().zapamtiPaket(p);
+         System.out.println("Dodat Paket");
+         */
+         Termin t = new Termin(null, true, new Paket("5", null, null), "10");
+
+        Kontroler.vratiKontrolera().obrisiTermin(t);
+        System.out.println("Obrisan");
+        
+         Paket p = new Paket("5", "kardio","1500");
+         Kontroler.vratiKontrolera().izmeniPaket(p);
+         System.out.println("Izmenjen paket");
+         
+         Termin t1 = new Termin(null, true, new Paket("5", null, null), "0");
+
+        Kontroler.vratiKontrolera().zapamtiTermin(t1);
+        System.out.println("Dodat");
+        
+        Termin t2 = new Termin(null, true, new Paket("5", null, null), "0");
+
+        Kontroler.vratiKontrolera().zapamtiTermin(t2);
+        System.out.println("Dodat");
     }
 }

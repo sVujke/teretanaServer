@@ -6,8 +6,14 @@
 package so;
 
 import domen.AbstractObjekat;
+import domen.Clan;
+import domen.IstorijatPaketa;
+import domen.Paket;
 import domen.Termin;
+import java.sql.SQLException;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -17,10 +23,12 @@ public class SOVratiListuTermina extends AbstractSO{
     
     private List<AbstractObjekat> termini;
     
+    
     @Override
     protected void izvrsiKonkretnuOperaciju() {
         
-        db.vratiSveObjekte(new Termin());
+        termini = db.vratiSveObjekte(new Termin());
+        ucitajPakete();
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
@@ -36,6 +44,18 @@ public class SOVratiListuTermina extends AbstractSO{
 
     public List<AbstractObjekat> getTermini() {
         return termini;
+    }
+
+    private void ucitajPakete() {
+        for (AbstractObjekat abs : termini) {
+            try {
+                Termin t = (Termin) abs;
+                t.setPaket((Paket) db.vratiObjekatPoKljucu(new Paket(), Integer.parseInt(t.getPaket().getPaketId())));
+            } catch (SQLException ex) {
+                Logger.getLogger(SOVratiListuIstorijatPaketa.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 }

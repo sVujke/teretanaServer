@@ -377,6 +377,26 @@ public class KlijentThread extends Thread {
                     System.out.println("salje se odgovor PRETRAZI_PAKETE");
                     out.writeObject(st);
                 }
+                
+                if (operacija == Konstante.ZAPAMTI_PAKET) {
+                    //ServerTransfer st = new ServerTransfer();
+
+                    try {
+                        //System.out.println("VRATI_LISTU_KORISNIKA u CT");
+                        AbstractObjekat paket = (AbstractObjekat) kt.getParametar();
+                        
+                        AbstractObjekat dol = kontroler.Kontroler.zapamtiPaket(paket);
+                        st.setUspesnostOperacije(1);
+                        st.setPodaci(dol);
+                    } catch (Exception ex) {
+                        st.setUspesnostOperacije(-1);
+                        st.setException(ex);
+                        Logger.getLogger(KlijentThread.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    System.out.println("salje se odgovor ZAPAMTI_DOLAZAK");
+                    out.writeObject(st);
+                }
+                
             }
 
             //super.run(); //To change body of generated methods, choose Tools | Templates.

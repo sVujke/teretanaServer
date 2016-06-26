@@ -26,6 +26,7 @@ public class SOObrisiTermin extends AbstractSO  {
     protected void izvrsiKonkretnuOperaciju() {
         try {
             db.obrisiObjekat(termin);
+            //ucitajPakete();
             // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
         } catch (SQLException ex) {
             Logger.getLogger(SOObrisiTermin.class.getName()).log(Level.SEVERE, null, ex);
@@ -45,5 +46,7 @@ public class SOObrisiTermin extends AbstractSO  {
     public AbstractObjekat getTermin() {
         return termin;
     }
+
+    
     
 }
