@@ -172,7 +172,10 @@ public class Kontroler {
         Paket p = (Paket) paket;
 
         som.izvrsiOperaciju();
+        Paket izBaze = (Paket) som.getPaket();
+        //String id = izBaze.getPaketId();
         for (Termin ter : p.getTermini()) {
+            ter.setPaket(izBaze);
             zapamtiTermin(ter);
         }
 
