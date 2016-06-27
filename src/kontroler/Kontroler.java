@@ -301,10 +301,10 @@ public class Kontroler {
     
     public static AbstractObjekat izmeniClana(List<Object> lista) {
         System.out.println("Izmeni clana");
-        SOIzmeniClana som = new SOIzmeniClana((AbstractObjekat) lista.get(0));
+        SOIzmeniClana som = new SOIzmeniClana(lista);
 
         som.izvrsiOperaciju();
-        izmeniIP((AbstractObjekat) lista.get(1));
+        //izmeniIP((AbstractObjekat) lista.get(1));
         System.out.println("izvrsena operacija IZMENI_CLANA");
         return som.getClan();
     }
