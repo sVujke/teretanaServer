@@ -195,22 +195,11 @@ public class Kontroler {
     }
 
     public static AbstractObjekat izmeniPaket(List<Object> lista) {
-        List<AbstractObjekat> zaBrisanje = (List<AbstractObjekat>) lista.get(0);
-        for (AbstractObjekat abs : zaBrisanje) {
-            obrisiTermin(abs);
-        }
-        Paket paket = (Paket) lista.get(1);
-        SOIzmeniPaket som = new SOIzmeniPaket(paket);
+        
+        
+        SOIzmeniPaket som = new SOIzmeniPaket(lista);
         som.izvrsiOperaciju();
         
-        Paket izBaze = (Paket) som.getPaket();
-        //String id = izBaze.getPaketId();
-        for (Termin ter : paket.getTermini()) {
-            ter.setPaket(izBaze);
-            ter.setId("0");
-            zapamtiTermin(ter);
-        }
-       
         System.out.println("izvrsena operacija");
         return som.getPaket();
     }
