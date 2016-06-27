@@ -12,6 +12,7 @@ import domen.Korisnik;
 import domen.Paket;
 import domen.Termin;
 import java.util.List;
+import model.TblModelKorisnik;
 import so.SOIzmeniClana;
 import so.SOIzmeniIstorijatPaketa;
 import so.SOIzmeniPaket;
@@ -47,6 +48,15 @@ import so.SOZapamtiTermin;
 public class Kontroler {
 
     private static Kontroler instance;
+    private List<AbstractObjekat> listaKorisnika;
+    private TblModelKorisnik tbl;
+    
+    public static Kontroler vratiKontrolera() {
+        if (instance == null) {
+            instance = new Kontroler();
+        }
+        return instance;
+    }
 
     public static List<AbstractObjekat> vratiListuPretplata() {
         SOVratiListuPretplata som = new SOVratiListuPretplata();
@@ -63,15 +73,6 @@ public class Kontroler {
         som.izvrsiOperaciju();
         return som.getPaketi();
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    private List<AbstractObjekat> listaKorisnika;
-
-    public static Kontroler vratiKontrolera() {
-        if (instance == null) {
-            instance = new Kontroler();
-        }
-        return instance;
     }
 
     public static List<AbstractObjekat> vratiListuMesta() throws Exception {
@@ -120,9 +121,9 @@ public class Kontroler {
 
     public static AbstractObjekat zapamtiClana(List<Object> parametri) throws Exception {
         SOZapamtiClana som = new SOZapamtiClana(parametri);
-        SOZapamtiIstorijatPaketa som2 = new SOZapamtiIstorijatPaketa((AbstractObjekat) parametri.get(1));
+        //SOZapamtiIstorijatPaketa som2 = new SOZapamtiIstorijatPaketa((AbstractObjekat) parametri.get(1));
         som.izvrsiOperaciju();
-        som2.izvrsiOperaciju();
+        //som2.izvrsiOperaciju();
         System.out.println("izvrsena operacija ZAPAMTI_CLANA");
         return som.getClan();
 
@@ -315,6 +316,10 @@ public class Kontroler {
         System.out.println("izvrsena operacija");
         return som.getIstorijatPaketaBrisem();
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public TblModelKorisnik getTbl() {
+        return tbl;
     }
 
 }

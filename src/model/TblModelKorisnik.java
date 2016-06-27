@@ -5,6 +5,7 @@
  */
 package model;
 
+import domen.AbstractObjekat;
 import domen.Korisnik;
 import java.util.List;
 import javax.swing.table.AbstractTableModel;
@@ -65,5 +66,9 @@ public class TblModelKorisnik extends AbstractTableModel{
         korisnici.remove(k);
         fireTableDataChanged();
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public void resetujTabelu(List<AbstractObjekat> listaKorisnika) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

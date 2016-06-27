@@ -32,12 +32,15 @@ public class SOPrijaviKorisnika extends AbstractSO {
         for (AbstractObjekat aKorisnik : listaKorisnika) {
             Korisnik kor = (Korisnik) aKorisnik;
             if(kor.equals(korUserPas)){
-                korisnik = kor;
-                Korisnik k = (Korisnik) korisnik;
+//                korisnik = kor;
+                Korisnik k = kor;
                 //k.setStatusKorisnika("online");
                 int indeks = Kontroler.vratiKontrolera().getListaKorisnika().indexOf(k);
+                
                 ((Korisnik)Kontroler.vratiKontrolera().getListaKorisnika().get(indeks)).setStatusKorisnika("online");
+                Korisnik x = (Korisnik) Kontroler.vratiKontrolera().getListaKorisnika().get(indeks);
                 System.out.println("Pronadjen");
+                System.out.println("STATUS: "+x.getStatusKorisnika());
                 nema = true;
                 break;
             }

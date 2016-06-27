@@ -25,12 +25,13 @@ public class SOZapamtiClana extends AbstractSO {
     
     private List<Object> parametri;
     private AbstractObjekat clan;
-    private AbstractObjekat paket;
-    private List<AbstractObjekat> listaIP;
+    private AbstractObjekat istorijatPaketa;
+//    private AbstractObjekat paket;
+//    private List<AbstractObjekat> listaIP;
     
     public SOZapamtiClana(List<Object> parametri) {
         this.clan = (AbstractObjekat) parametri.get(0);
-        this.paket = (AbstractObjekat) parametri.get(1);
+        this.istorijatPaketa = (AbstractObjekat) parametri.get(1);
     }
   
     @Override
@@ -40,6 +41,11 @@ public class SOZapamtiClana extends AbstractSO {
             
             //db.potvrdiTransakciju();
             System.out.println("SACUVAN JE CLAN");
+            
+            db.sacuvajObjekat(istorijatPaketa);
+            
+            System.out.println("SACUVAN JE IP za CLANA");
+            
             //Clan c = (Clan) clan;
             //Paket p = (Paket) paket;
             
@@ -106,23 +112,23 @@ public class SOZapamtiClana extends AbstractSO {
 
 
 
-    private void ubaciNovuEvidenciju(IstorijatPaketa torijatP, Clan c, Paket p) {
-        
-        SOZapamtiIstorijatPaketa som = new SOZapamtiIstorijatPaketa(torijatP);
-        som.izvrsiOperaciju();
-        
-        IstorijatPaketa isp = new IstorijatPaketa(true, danasnjiDatum(), c, p, "0");
-        SOZapamtiIstorijatPaketa so = new SOZapamtiIstorijatPaketa(isp);
-        so.izvrsiOperaciju();
-        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    private void ubaciPrvuEvidenciju(Clan c, Paket p) {
-        IstorijatPaketa isp = new IstorijatPaketa(true, danasnjiDatum(), c, p, "0");
-        SOZapamtiIstorijatPaketa so = new SOZapamtiIstorijatPaketa(isp);
-        so.izvrsiOperaciju();
-        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+//    private void ubaciNovuEvidenciju(IstorijatPaketa torijatP, Clan c, Paket p) {
+//        
+//        SOZapamtiIstorijatPaketa som = new SOZapamtiIstorijatPaketa(torijatP);
+//        som.izvrsiOperaciju();
+//        
+//        IstorijatPaketa isp = new IstorijatPaketa(true, danasnjiDatum(), c, p, "0");
+//        SOZapamtiIstorijatPaketa so = new SOZapamtiIstorijatPaketa(isp);
+//        so.izvrsiOperaciju();
+//        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+//    }
+//
+//    private void ubaciPrvuEvidenciju(Clan c, Paket p) {
+//        IstorijatPaketa isp = new IstorijatPaketa(true, danasnjiDatum(), c, p, "0");
+//        SOZapamtiIstorijatPaketa so = new SOZapamtiIstorijatPaketa(isp);
+//        so.izvrsiOperaciju();
+//        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+//    }
     
     private Date danasnjiDatum(){
        // DateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy.");
@@ -134,9 +140,9 @@ public class SOZapamtiClana extends AbstractSO {
 //       Date date = format.parse(string);
     }
 
-    private void ubaciEvidencijuPaketa() {
-       // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+//    private void ubaciEvidencijuPaketa() {
+//       // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+//    }
 
     
 

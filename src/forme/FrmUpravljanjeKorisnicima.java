@@ -17,6 +17,7 @@ import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 import kontroler.Kontroler;
 import model.TblModelKorisnik;
+import thread.RefreshThread;
 
 /**
  *
@@ -179,6 +180,7 @@ public class FrmUpravljanjeKorisnicima extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
+                //RefreshThread rt = new RefreshThread(tbl);
                 new FrmUpravljanjeKorisnicima().setVisible(true);
             }
         });
