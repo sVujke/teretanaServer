@@ -178,19 +178,12 @@ public class Kontroler {
         return som.getTermini();
     }
 
-    public static AbstractObjekat zapamtiPaket(AbstractObjekat paket) {
-        SOZapamtiPaket som = new SOZapamtiPaket(paket);
-        Paket p = (Paket) paket;
+    public static AbstractObjekat zapamtiPaket(List<Object> lista) {
+        SOZapamtiPaket som = new SOZapamtiPaket(lista);
 
         som.izvrsiOperaciju();
-        Paket izBaze = (Paket) som.getPaket();
-        //String id = izBaze.getPaketId();
-        for (Termin ter : p.getTermini()) {
-            ter.setPaket(izBaze);
-            zapamtiTermin(ter);
-        }
 
-        System.out.println("izvrsena operacija");
+        System.out.println("izvrsena operacija ZAPAMTI PAKET");
         return som.getPaket();
     }
 

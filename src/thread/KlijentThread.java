@@ -436,9 +436,9 @@ public class KlijentThread extends Thread {
 
                     try {
                         //System.out.println("VRATI_LISTU_KORISNIKA u CT");
-                        AbstractObjekat paket = (AbstractObjekat) kt.getParametar();
+                        List<Object> lista =  (List<Object>) kt.getParametar();
                         
-                        AbstractObjekat dol = kontroler.Kontroler.zapamtiPaket(paket);
+                        AbstractObjekat dol = kontroler.Kontroler.zapamtiPaket(lista);
                         st.setUspesnostOperacije(1);
                         st.setPodaci(dol);
                     } catch (Exception ex) {
