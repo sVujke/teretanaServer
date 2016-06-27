@@ -174,6 +174,8 @@ List<AbstractObjekat> lip = Kontroler.vratiKontrolera().vratiListuIP();
          Kontroler.vratiKontrolera().zapamtiPaket(p);
          System.out.println("Dodat Paket");
          */
+         
+         /*
          Termin t = new Termin(null, true, new Paket("5", null, null), "10");
 
         Kontroler.vratiKontrolera().obrisiTermin(t);
@@ -191,6 +193,25 @@ List<AbstractObjekat> lip = Kontroler.vratiKontrolera().vratiListuIP();
         Termin t2 = new Termin(null, true, new Paket("5", null, null), "0");
 
         Kontroler.vratiKontrolera().zapamtiTermin(t2);
-        System.out.println("Dodat");
+        System.out.println("Dodat
+
+*/
+         /*
+         List<AbstractObjekat> termini = Kontroler.vratiListuTermina();
+         for (AbstractObjekat abs : termini) {
+             System.out.println(abs);
+        }
+        */
+         
+         /*
+         Clan clan = new Clan("33", "Simorg", "Tebrahhhh", "s@s.ys", "Zlatiborska 150", "055689345", new Mesto(null, null, "6"));
+         Kontroler.vratiKontrolera().izmeniClana(clan);
+         System.out.println("update uradjen");
+         */
+         IstorijatPaketa ip = new IstorijatPaketa(true, new Date(),
+                 new Clan("1", null, null, null, null, null, null),
+                 new Paket("1", null, null), "0");
+         Kontroler.vratiKontrolera().izmeniIP(ip);
+         System.out.println("update");
     }
 }

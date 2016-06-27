@@ -12,6 +12,7 @@ import domen.Korisnik;
 import domen.Paket;
 import domen.Termin;
 import java.util.List;
+import so.SOIzmeniClana;
 import so.SOIzmeniIstorijatPaketa;
 import so.SOIzmeniPaket;
 import so.SOObrisiClana;
@@ -30,6 +31,7 @@ import so.SOVratiListuKorisnika;
 import so.SOVratiListuMesta;
 import so.SOVratiListuPaketa;
 import so.SOVratiListuPretplata;
+import so.SOVratiListuTermina;
 import so.SOZapamtiClana;
 import so.SOZapamtiDolazak;
 import so.SOZapamtiIstorijatPaketa;
@@ -166,6 +168,14 @@ public class Kontroler {
         System.out.println("izvrsena operacija");
         return som.getPaketi();
     }
+    
+    public static List<AbstractObjekat> vratiListuTermina() {
+        SOVratiListuTermina som = new SOVratiListuTermina();
+
+        som.izvrsiOperaciju();
+        System.out.println("izvrsena operacija");
+        return som.getTermini();
+    }
 
     public static AbstractObjekat zapamtiPaket(AbstractObjekat paket) {
         SOZapamtiPaket som = new SOZapamtiPaket(paket);
@@ -183,10 +193,23 @@ public class Kontroler {
         return som.getPaket();
     }
 
-    public static AbstractObjekat izmeniPaket(AbstractObjekat paket) {
+    public static AbstractObjekat izmeniPaket(List<Object> lista) {
+        List<AbstractObjekat> zaBrisanje = (List<AbstractObjekat>) lista.get(0);
+        for (AbstractObjekat abs : zaBrisanje) {
+            obrisiTermin(abs);
+        }
+        Paket paket = (Paket) lista.get(1);
         SOIzmeniPaket som = new SOIzmeniPaket(paket);
-
         som.izvrsiOperaciju();
+        
+        Paket izBaze = (Paket) som.getPaket();
+        //String id = izBaze.getPaketId();
+        for (Termin ter : paket.getTermini()) {
+            ter.setPaket(izBaze);
+            ter.setId("0");
+            zapamtiTermin(ter);
+        }
+       
         System.out.println("izvrsena operacija");
         return som.getPaket();
     }
@@ -273,6 +296,16 @@ public class Kontroler {
         som.izvrsiOperaciju();
         System.out.println("izvrsena operacija");
         return som.getIstorijatPaketa();
+    }
+    
+    public static AbstractObjekat izmeniClana(List<Object> lista) {
+        System.out.println("Izmeni clana");
+        SOIzmeniClana som = new SOIzmeniClana((AbstractObjekat) lista.get(0));
+
+        som.izvrsiOperaciju();
+        izmeniIP((AbstractObjekat) lista.get(1));
+        System.out.println("izvrsena operacija IZMENI_CLANA");
+        return som.getClan();
     }
 
     public static AbstractObjekat obrisiIP(AbstractObjekat ip) {

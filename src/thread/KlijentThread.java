@@ -63,6 +63,23 @@ public class KlijentThread extends Thread {
                     out.writeObject(st);
                     continue;
                 }
+                
+                 if (operacija == Konstante.VRATI_LISTU_TERMINA) {
+//                    ServerTransfer st = new ServerTransfer();
+
+                    try {
+                        List<AbstractObjekat> mesta = kontroler.Kontroler.vratiListuTermina();
+                        st.setUspesnostOperacije(1);
+                        st.setPodaci(mesta);
+                    } catch (Exception ex) {
+                        st.setUspesnostOperacije(-1);
+                        st.setException(ex);
+                        Logger.getLogger(KlijentThread.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+
+                    out.writeObject(st);
+                    continue;
+                }
 
                 if (operacija == Konstante.VRATI_LISTU_PAKETA) {
 //                    ServerTransfer st = new ServerTransfer();
@@ -429,7 +446,47 @@ public class KlijentThread extends Thread {
                         st.setException(ex);
                         Logger.getLogger(KlijentThread.class.getName()).log(Level.SEVERE, null, ex);
                     }
-                    System.out.println("salje se odgovor ZAPAMTI_DOLAZAK");
+                    System.out.println("salje se odgovor ZAPAMTI_PAKET");
+                    out.writeObject(st);
+                    continue;
+                }
+                
+                if (operacija == Konstante.IZMENI_PAKET) {
+                    //ServerTransfer st = new ServerTransfer();
+                    System.out.println("Hvata ga izmeni paket");
+                    try {
+                        //System.out.println("VRATI_LISTU_KORISNIKA u CT");
+                        List<Object> lista = (List<Object>) kt.getParametar();
+                        
+                        AbstractObjekat dol = kontroler.Kontroler.izmeniPaket(lista);
+                        st.setUspesnostOperacije(1);
+                        st.setPodaci(dol);
+                    } catch (Exception ex) {
+                        st.setUspesnostOperacije(-1);
+                        st.setException(ex);
+                        Logger.getLogger(KlijentThread.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    System.out.println("salje se odgovor IZMENI_PAKET");
+                    out.writeObject(st);
+                    continue;
+                }
+                
+                if (operacija == Konstante.IZMENI_CLANA) {
+                    //ServerTransfer st = new ServerTransfer();
+
+                    try {
+                        //System.out.println("VRATI_LISTU_KORISNIKA u CT");
+                        List<Object> lista = (List<Object>) kt.getParametar();
+                        
+                        AbstractObjekat dol = kontroler.Kontroler.izmeniClana(lista);
+                        st.setUspesnostOperacije(1);
+                        st.setPodaci(dol);
+                    } catch (Exception ex) {
+                        st.setUspesnostOperacije(-1);
+                        st.setException(ex);
+                        Logger.getLogger(KlijentThread.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    System.out.println("salje se odgovor IZMENI_CLANA");
                     out.writeObject(st);
                     continue;
                 }

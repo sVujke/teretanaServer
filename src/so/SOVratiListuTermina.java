@@ -50,7 +50,12 @@ public class SOVratiListuTermina extends AbstractSO{
         for (AbstractObjekat abs : termini) {
             try {
                 Termin t = (Termin) abs;
-                t.setPaket((Paket) db.vratiObjekatPoKljucu(new Paket(), Integer.parseInt(t.getPaket().getPaketId())));
+//                System.out.println(t);
+//                System.out.println(t.getPaket().getPaketId());
+                Paket p = (Paket)  db.vratiObjekatPoKljucu(new Paket(), Integer.parseInt(t.getPaket().getPaketId()));
+                System.out.println("EVO ID PAKETA: "+p.getPaketId());
+                t.setPaket(p);
+//                System.out.println(t.getPaket().getPaketId());
             } catch (SQLException ex) {
                 Logger.getLogger(SOVratiListuIstorijatPaketa.class.getName()).log(Level.SEVERE, null, ex);
             }

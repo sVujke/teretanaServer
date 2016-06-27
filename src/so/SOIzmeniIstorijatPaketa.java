@@ -33,18 +33,23 @@ public class SOIzmeniIstorijatPaketa extends AbstractSO {
     protected void izvrsiKonkretnuOperaciju() {
         izBaze = db.vratiSveObjekte(new IstorijatPaketa());
         ucatijaClanovePakete();
-
-        String idPaketa = DaLiJePaketUBazi();
-
-        System.out.println("ID PAKETA: "+idPaketa);
         
-        if(idPaketa.equals("0")){
-            deaktiviraj();
+        if(daLiMenjam()){
+            dekativiraj();
             dodaj();
-        }else{
-            deaktiviraj();
-            aktiviraj(idPaketa);
         }
+//        String idPaketa = DaLiJePaketUBazi();
+
+//        System.out.println("ID PAKETA: "+idPaketa);
+        
+//        if(idPaketa.equals("0")){
+//            deaktiviraj();
+//            dodaj();
+//        }else{
+//            deaktiviraj();
+////            aktiviraj(idPaketa);
+//            dodaj();
+//        }
         
 // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
@@ -125,18 +130,39 @@ public class SOIzmeniIstorijatPaketa extends AbstractSO {
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    private void aktiviraj(String idPaketa) {
+    
+
+    private boolean daLiMenjam() {
         for (AbstractObjekat abs : izBaze) {
             IstorijatPaketa ip = (IstorijatPaketa) abs;
-            System.out.println("PRe IF-a");
-            if ( ip.getClan().equals(istorijatP.getClan())
-                    && ip.isAktivan() == false &&
-                    ip.getPaket().getPaketId().equals(idPaketa) ) {
-                ip.setAktivan(true);
-                System.out.println("AKTIVIRAN paket: "+ip.getPaket().getPaketId());
-//                AbstractObjekat ab = ip;
-                db.sacuvajIliAzurirajObjekat(ip);
+            if(ip.getClan().equals(istorijatP.getClan())
+                    && !ip.getPaket().equals(istorijatP.getPaket())
+                    && ip.isAktivan() == true){
+                return true;
             }
+            
+//            if(ip.get)
+        }
+        
+        return false;
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    private void dekativiraj() {
+       for (AbstractObjekat abs : izBaze) {
+            IstorijatPaketa ip = (IstorijatPaketa) abs;
+            if(ip.getClan().equals(istorijatP.getClan())
+                    && !ip.getPaket().equals(istorijatP.getPaket())
+                    && ip.isAktivan() == true){
+//                return true;
+                  ip.setAktivan(false);
+                  System.out.println("CLANID: "+ip.getClan().getClanId() 
+                          +" PAKET ID: "+ip.getPaket().getPaketId()+
+                          "AKTIVAN: "+ip.isAktivan());
+                  db.azurirajObjekat(ip);
+            }
+            
+//            if(ip.get)
         }
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
