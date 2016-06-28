@@ -65,7 +65,7 @@ public class DBBroker {
             System.out.println("Konekcija je uspostavljena");
 
             /* Class.forName("com.mysql.jdbc.Driver");
-            
+            pred refactor
             String url = util.Konstante.url;
             String user = util.Konstante.user;
             String password = util.Konstante.pass; 
