@@ -49,6 +49,7 @@ public class FrmStart extends javax.swing.JFrame {
         jbtPokreniServer = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Admin Prozor");
 
         jlblStatusServera.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jlblStatusServera.setForeground(new java.awt.Color(255, 51, 51));

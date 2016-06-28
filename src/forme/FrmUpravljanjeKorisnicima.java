@@ -52,6 +52,7 @@ public class FrmUpravljanjeKorisnicima extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Upravljanje korisnicima");
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {

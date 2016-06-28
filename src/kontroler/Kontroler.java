@@ -130,15 +130,6 @@ public class Kontroler {
     }
 
     public static AbstractObjekat obrisiClana(AbstractObjekat clan) {
-        Clan c = (Clan) clan;
-        List<AbstractObjekat> lip = Kontroler.vratiKontrolera().vratiListuIP();
-        for (AbstractObjekat abs : lip) {
-            IstorijatPaketa ip = (IstorijatPaketa) abs;
-            if (ip.getClan().equals(c)) {
-                obrisiIP(abs);
-            }
-        }
-
         SOObrisiClana som = new SOObrisiClana(clan);
 
         som.izvrsiOperaciju();
