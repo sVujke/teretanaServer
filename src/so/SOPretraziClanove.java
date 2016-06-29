@@ -7,8 +7,12 @@ package so;
 
 import domen.AbstractObjekat;
 import domen.Clan;
+import domen.Mesto;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -17,6 +21,7 @@ import java.util.List;
 public class SOPretraziClanove extends AbstractSO {
 
     private List<AbstractObjekat> clanovi = new ArrayList<>();
+    List<AbstractObjekat> sviClanovi;
     private String pretraga;
 
     public SOPretraziClanove(String pretraga) {
@@ -28,9 +33,8 @@ public class SOPretraziClanove extends AbstractSO {
     @Override
     protected void izvrsiKonkretnuOperaciju() {
 //        List<AbstractObjekat> sviClanovi = db.vratiSveObjekte(new Clan());
-        SOVratiListuClanova sov = new SOVratiListuClanova();
-        sov.izvrsiOperaciju();
-        List<AbstractObjekat> sviClanovi = sov.getListaClanova();
+        sviClanovi = db.vratiSveObjekte(new Clan());
+        ucitajMesta();
         for (AbstractObjekat clanIzBaze : sviClanovi) {
             Clan clb = (Clan) clanIzBaze;
 
@@ -38,7 +42,8 @@ public class SOPretraziClanove extends AbstractSO {
                     || clb.getEmail().toLowerCase().contains(pretraga)
                     || clb.getMesto().getNaziv().toLowerCase().contains(pretraga)
                     || clb.getPrezime().toLowerCase().contains(pretraga)||
-                    clb.getTelefon().toLowerCase().contains(pretraga)) {
+                    clb.getTelefon().toLowerCase().contains(pretraga)
+                    || clb.getMesto().getNaziv().contains(pretraga)) {
 
                 clanovi.add(clb);
             }
@@ -58,6 +63,21 @@ public class SOPretraziClanove extends AbstractSO {
 
     public List<AbstractObjekat> getClanovi() {
         return clanovi;
+    }
+
+    private void ucitajMesta() {
+        for (AbstractObjekat abs : sviClanovi) {
+            try {
+                Clan cl = (Clan) abs;
+                cl.setMesto((Mesto) db.vratiObjekatPoKljucu(new Mesto(), Integer.parseInt(cl.getMesto().getMestoid())));
+                //System.out.println(cl.getMesto());
+            }
+            //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            catch (SQLException ex) {
+                Logger.getLogger(SOVratiListuClanova.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }
