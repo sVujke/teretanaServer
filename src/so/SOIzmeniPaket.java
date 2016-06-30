@@ -46,10 +46,12 @@ public class SOIzmeniPaket extends AbstractSO {
     
     @Override
     protected void izvrsiKonkretnuOperaciju() {
-        
+        System.out.println("-----------------------------------------------"
+                + "SOOOOOOOOOOOOOOOO--------------------------------------");
          
         for (AbstractObjekat abs : zaBrisanje) {
             obrisiTermin(abs);
+            System.out.println("BRISEM TERMIN");
         }
         
         db.sacuvajIliAzurirajObjekat(paket);

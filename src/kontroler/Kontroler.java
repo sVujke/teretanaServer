@@ -6,25 +6,25 @@
 package kontroler;
 
 import domen.AbstractObjekat;
-import domen.Clan;
-import domen.IstorijatPaketa;
+//import domen.Clan;
+//import domen.IstorijatPaketa;
 import domen.Korisnik;
-import domen.Paket;
-import domen.Termin;
+//import domen.Paket;
+//import domen.Termin;
 import java.util.List;
 import model.TblModelKorisnik;
 import so.SOIzmeniClana;
-import so.SOIzmeniIstorijatPaketa;
+//import so.SOIzmeniIstorijatPaketa;
 import so.SOIzmeniPaket;
 import so.SOObrisiClana;
-import so.SOObrisiIstorijatPaketa;
+//import so.SOObrisiIstorijatPaketa;
 import so.SOObrisiKorisnika;
-import so.SOObrisiTermin;
+//import so.SOObrisiTermin;
 import so.SOPretraziClanove;
 import so.SOPretraziPakete;
 import so.SOPretraziPretplate;
 import so.SOPrijaviKorisnika;
-import so.SOVratiClanaPoPK;
+//import so.SOVratiClanaPoPK;
 import so.SOVratiListuClanova;
 import so.SOVratiListuDolazaka;
 import so.SOVratiListuIstorijatPaketa;
@@ -35,11 +35,11 @@ import so.SOVratiListuPretplata;
 import so.SOVratiListuTermina;
 import so.SOZapamtiClana;
 import so.SOZapamtiDolazak;
-import so.SOZapamtiIstorijatPaketa;
+//import so.SOZapamtiIstorijatPaketa;
 import so.SOZapamtiKorisnika;
 import so.SOZapamtiPaket;
 import so.SOZapamtiPretplatu;
-import so.SOZapamtiTermin;
+//import so.SOZapamtiTermin;
 
 /**
  *
@@ -204,21 +204,21 @@ public class Kontroler {
         return som.getKorisnik();
     }
 
-    public static AbstractObjekat obrisiTermin(AbstractObjekat termin) {
-        SOObrisiTermin som = new SOObrisiTermin(termin);
-
-        som.izvrsiOperaciju();
-        System.out.println("izvrsena operacija");
-        return som.getTermin();
-    }
-
-    public static AbstractObjekat zapamtiTermin(AbstractObjekat termin) {
-        SOZapamtiTermin som = new SOZapamtiTermin(termin);
-
-        som.izvrsiOperaciju();
-        System.out.println("izvrsena operacija");
-        return som.getTermin();
-    }
+//    public static AbstractObjekat obrisiTermin(AbstractObjekat termin) {
+//        SOObrisiTermin som = new SOObrisiTermin(termin);
+//
+//        som.izvrsiOperaciju();
+//        System.out.println("izvrsena operacija");
+//        return som.getTermin();
+//    }
+//
+//    public static AbstractObjekat zapamtiTermin(AbstractObjekat termin) {
+//        SOZapamtiTermin som = new SOZapamtiTermin(termin);
+//
+//        som.izvrsiOperaciju();
+//        System.out.println("izvrsena operacija");
+//        return som.getTermin();
+//    }
 
     public static AbstractObjekat zapamtiPretplatu(AbstractObjekat pretplata) {
         SOZapamtiPretplatu som = new SOZapamtiPretplatu(pretplata);
@@ -247,33 +247,33 @@ public class Kontroler {
         this.listaKorisnika = listaKorisnika;
     }
 
-    public static AbstractObjekat vratiClanaPoPK(String id) {
-        SOVratiClanaPoPK som = new SOVratiClanaPoPK(id);
+//    public static AbstractObjekat vratiClanaPoPK(String id) {
+//        SOVratiClanaPoPK som = new SOVratiClanaPoPK(id);
+//
+//        som.izvrsiOperaciju();
+//        System.out.println("izvrsena operacija");
+//        return som.getClan();
+//        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+//    }
 
-        som.izvrsiOperaciju();
-        System.out.println("izvrsena operacija");
-        return som.getClan();
-        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+//    public static AbstractObjekat zapamtiIP(AbstractObjekat ip) {
+//        SOZapamtiIstorijatPaketa som = new SOZapamtiIstorijatPaketa(ip);
+//
+//        som.izvrsiOperaciju();
+//        System.out.println("izvrsena operacija");
+//        return som.getIstorijatPaketa();
+//    }
 
-    public static AbstractObjekat zapamtiIP(AbstractObjekat ip) {
-        SOZapamtiIstorijatPaketa som = new SOZapamtiIstorijatPaketa(ip);
-
-        som.izvrsiOperaciju();
-        System.out.println("izvrsena operacija");
-        return som.getIstorijatPaketa();
-    }
-
-    public static AbstractObjekat izmeniIP(AbstractObjekat ip) {
-        SOIzmeniIstorijatPaketa som = new SOIzmeniIstorijatPaketa(ip);
-
-        som.izvrsiOperaciju();
-        System.out.println("izvrsena operacija");
-        return som.getIstorijatPaketa();
-    }
+//    public static AbstractObjekat izmeniIP(AbstractObjekat ip) {
+//        SOIzmeniIstorijatPaketa som = new SOIzmeniIstorijatPaketa(ip);
+//
+//        som.izvrsiOperaciju();
+//        System.out.println("izvrsena operacija");
+//        return som.getIstorijatPaketa();
+//    }
     
     public static AbstractObjekat izmeniClana(List<Object> lista) {
-        System.out.println("Izmeni clana");
+        System.out.println("Izmeni clana kontroler");
         SOIzmeniClana som = new SOIzmeniClana(lista);
 
         som.izvrsiOperaciju();
@@ -282,17 +282,17 @@ public class Kontroler {
         return som.getClan();
     }
 
-    public static AbstractObjekat obrisiIP(AbstractObjekat ip) {
-        SOObrisiIstorijatPaketa som = new SOObrisiIstorijatPaketa(ip);
+//    public static AbstractObjekat obrisiIP(AbstractObjekat ip) {
+//        SOObrisiIstorijatPaketa som = new SOObrisiIstorijatPaketa(ip);
+//
+//        som.izvrsiOperaciju();
+//        System.out.println("izvrsena operacija");
+//        return som.getIstorijatPaketaBrisem();
+//        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+//    }
 
-        som.izvrsiOperaciju();
-        System.out.println("izvrsena operacija");
-        return som.getIstorijatPaketaBrisem();
-        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    public TblModelKorisnik getTbl() {
-        return tbl;
-    }
+//    public TblModelKorisnik getTbl() {
+//        return tbl;
+//    }
 
 }

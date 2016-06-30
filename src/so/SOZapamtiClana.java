@@ -84,52 +84,7 @@ public class SOZapamtiClana extends AbstractSO {
         return clan;
     }
 
-    private IstorijatPaketa clanVecImaAktivanPaket(List<AbstractObjekat> listaIP, Clan c, Paket p) {
-        System.out.println("usao u metodu clanVecImaAktivanPaket " );
-         for (AbstractObjekat abs : listaIP) {
-             System.out.println("usao u for");
-                IstorijatPaketa ip = (IstorijatPaketa) abs;
-                System.out.println("pre if: "+ip.getStatus());
-                if(ip.getClan().getClanId().equals(c.getClanId())
-                        && ip.getPaket().getPaketId().equals(p.getPaketId())
-                        && ip.getStatus() == 1){
-                    System.out.println("NADJEN PAKET KOJI JE VEC AKTIVAN!");
-                    return ip;
-                }
-        }
-        String x = "OVO CE BITI PRVI PUT DA CLAN UZIMA PAKET";
-                System.out.println(x);
-        return null;
-        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    private IstorijatPaketa promeniStatusAktuelnogPaketa(IstorijatPaketa izEvidencije) {
-        izEvidencije.setStatus(0);
-        
-        return izEvidencije;
-        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-
-
-//    private void ubaciNovuEvidenciju(IstorijatPaketa torijatP, Clan c, Paket p) {
-//        
-//        SOZapamtiIstorijatPaketa som = new SOZapamtiIstorijatPaketa(torijatP);
-//        som.izvrsiOperaciju();
-//        
-//        IstorijatPaketa isp = new IstorijatPaketa(true, danasnjiDatum(), c, p, "0");
-//        SOZapamtiIstorijatPaketa so = new SOZapamtiIstorijatPaketa(isp);
-//        so.izvrsiOperaciju();
-//        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-//    }
-//
-//    private void ubaciPrvuEvidenciju(Clan c, Paket p) {
-//        IstorijatPaketa isp = new IstorijatPaketa(true, danasnjiDatum(), c, p, "0");
-//        SOZapamtiIstorijatPaketa so = new SOZapamtiIstorijatPaketa(isp);
-//        so.izvrsiOperaciju();
-//        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-//    }
-    
+  
     private Date danasnjiDatum(){
        // DateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy.");
         Date date = new Date();

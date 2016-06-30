@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package thread;
+package komunikacija;
 
 import domen.AbstractObjekat;
 import domen.Korisnik;
@@ -316,43 +316,43 @@ public class KlijentThread extends Thread {
                     continue;
                 }
 
-                if (operacija == Konstante.VRATI_CLANA_PK) {
-                    //ServerTransfer st = new ServerTransfer();
+//                if (operacija == Konstante.VRATI_CLANA_PK) {
+//                    //ServerTransfer st = new ServerTransfer();
+//
+//                    try {
+//                        //System.out.println("VRATI_LISTU_KORISNIKA u CT");
+//                        String id = (String) kt.getParametar();
+//                        AbstractObjekat clan = kontroler.Kontroler.vratiClanaPoPK(id);
+//                        st.setUspesnostOperacije(1);
+//                        st.setPodaci(clan);
+//                    } catch (Exception ex) {
+//                        st.setUspesnostOperacije(-1);
+//                        st.setException(ex);
+//                        Logger.getLogger(KlijentThread.class.getName()).log(Level.SEVERE, null, ex);
+//                    }
+//                    System.out.println("salje se odgovor");
+//                    out.writeObject(st);
+//                    continue;
+//                }
 
-                    try {
-                        //System.out.println("VRATI_LISTU_KORISNIKA u CT");
-                        String id = (String) kt.getParametar();
-                        AbstractObjekat clan = kontroler.Kontroler.vratiClanaPoPK(id);
-                        st.setUspesnostOperacije(1);
-                        st.setPodaci(clan);
-                    } catch (Exception ex) {
-                        st.setUspesnostOperacije(-1);
-                        st.setException(ex);
-                        Logger.getLogger(KlijentThread.class.getName()).log(Level.SEVERE, null, ex);
-                    }
-                    System.out.println("salje se odgovor");
-                    out.writeObject(st);
-                    continue;
-                }
-
-                if (operacija == Konstante.ZAPAMTI_IP) {
-                    //ServerTransfer st = new ServerTransfer();
-
-                    try {
-                        //System.out.println("VRATI_LISTU_KORISNIKA u CT");
-                        AbstractObjekat ip = (AbstractObjekat) kt.getParametar();
-                        AbstractObjekat isp = kontroler.Kontroler.zapamtiIP(ip);
-                        st.setUspesnostOperacije(1);
-                        st.setPodaci(isp);
-                    } catch (Exception ex) {
-                        st.setUspesnostOperacije(-1);
-                        st.setException(ex);
-                        Logger.getLogger(KlijentThread.class.getName()).log(Level.SEVERE, null, ex);
-                    }
-                    System.out.println("salje se odgovor ZAPAMTI_IP KlijentThread");
-                    out.writeObject(st);
-                    continue;
-                }
+//                if (operacija == Konstante.ZAPAMTI_IP) {
+//                    //ServerTransfer st = new ServerTransfer();
+//
+//                    try {
+//                        //System.out.println("VRATI_LISTU_KORISNIKA u CT");
+//                        AbstractObjekat ip = (AbstractObjekat) kt.getParametar();
+//                        AbstractObjekat isp = kontroler.Kontroler.zapamtiIP(ip);
+//                        st.setUspesnostOperacije(1);
+//                        st.setPodaci(isp);
+//                    } catch (Exception ex) {
+//                        st.setUspesnostOperacije(-1);
+//                        st.setException(ex);
+//                        Logger.getLogger(KlijentThread.class.getName()).log(Level.SEVERE, null, ex);
+//                    }
+//                    System.out.println("salje se odgovor ZAPAMTI_IP KlijentThread");
+//                    out.writeObject(st);
+//                    continue;
+//                }
 
                 if (operacija == Konstante.VRATI_LISTU_DOLAZAKA) {
                     //ServerTransfer st = new ServerTransfer();

@@ -12,20 +12,20 @@ import java.io.IOException;
 import java.net.ServerSocket;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import start.SocketServer;
+import socket.SocketServer;
 
 /**
  *
  * @author vujke
  */
-public class FrmStart extends javax.swing.JFrame {
+public class FrmServer extends javax.swing.JFrame {
 
     SocketServer socketServer;
 
     /**
      * Creates new form GlavnaFrm
      */
-    public FrmStart() {
+    public FrmServer() {
         initComponents();
         jPanel1.setVisible(false);
         //Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
@@ -180,7 +180,7 @@ public class FrmStart extends javax.swing.JFrame {
                     jbtPokreniServer.setText("Zaustavi server");
                     jPanel1.setVisible(true);
                 } catch (IOException ex) {
-                    Logger.getLogger(FrmStart.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(FrmServer.class.getName()).log(Level.SEVERE, null, ex);
                 }
 
             }
@@ -222,21 +222,23 @@ public class FrmStart extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FrmStart.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmServer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FrmStart.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmServer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FrmStart.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmServer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FrmStart.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmServer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FrmStart().setVisible(true);
+                new FrmServer().setVisible(true);
             }
         });
     }

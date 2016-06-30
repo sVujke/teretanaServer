@@ -17,7 +17,7 @@ import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 import kontroler.Kontroler;
 import model.TblModelKorisnik;
-import thread.RefreshThread;
+//import komunikacija.RefreshThread;
 
 /**
  *
